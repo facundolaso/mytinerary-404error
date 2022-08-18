@@ -5,8 +5,10 @@ import Welcome from './components/Welcome.js';
 
 function App() {
   return (
-    <Welcome/>
-    <Footer/>
+    <div>
+      <Welcome/>
+      <Footer/>    
+    </div>
   );
 }
 
