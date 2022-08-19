@@ -7,10 +7,9 @@ import PageLayout from './layout/PageLayout';
 function App() {
   return (
     <div>
-      <PageLayout>
-      <EventsCarousel/>
+
       <Welcome/>
-      </PageLayout>
+  
     </div>
   );
 }
