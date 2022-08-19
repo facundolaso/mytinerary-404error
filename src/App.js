@@ -1,15 +1,16 @@
 import './App.css';
 import EventsCarousel from './components/EventsCarousel';
-import Footer from './components/Footer';
 import Welcome from './components/Welcome.js';
+import PageLayout from './layout/PageLayout';
 
 
 function App() {
   return (
     <div>
+      <PageLayout>
       <EventsCarousel/>
       <Welcome/>
-      <Footer/>    
+      </PageLayout>
     </div>
   );
 }
