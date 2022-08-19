@@ -11,10 +11,10 @@ export default function Footer() {
             </div>
             <hr className='Footer-separator' />
             <div className='Footer-links-container'>
-                <h4 className='Footer-h4'>Links de interés</h4>
-                <a className='Footer-anchor' href="">navegacion</a>
-                <a className='Footer-anchor' href="">navegacion</a>
-                <a className='Footer-anchor' href="">navegacion</a>
+                <h4 className='Footer-h4'>Links of interest</h4>
+                <a className='Footer-anchor' href="">nav</a>
+                <a className='Footer-anchor' href="">nav</a>
+                <a className='Footer-anchor' href="">nav</a>
             </div>
             <hr className='Footer-separator' />
             <div className='Footer-rrss-container'>
