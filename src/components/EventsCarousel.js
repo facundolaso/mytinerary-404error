@@ -18,6 +18,6 @@ export default function EventsCarousel() {
 
 
 return (
-    <Carousel data={events}/>
+    <Carousel data={events} range={4} interval={5}/>
 )
 }
