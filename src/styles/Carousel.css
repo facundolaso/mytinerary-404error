@@ -2,11 +2,12 @@
 .slide{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 2rem;
-    gap: 1rem;
+    justify-content: space-evenly;
+    padding: 2rem 0;
+    gap: .5rem;
     text-align: center;
     background-color: #A8A4CE;
+    width: 100%;
 }
 
 .slide h2{
@@ -14,7 +15,7 @@
     color: #495C83  ;
     font-size: 2rem;
     text-shadow: 2px 2px white ;
-
+    padding-bottom: 1rem;
 }
 
 .Carousel-eventContainer p{
@@ -22,7 +23,7 @@
     font-weight: 500;
 }
 .Carousel-eventContainer img{
-    width: 20rem;
+    width: 21rem;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
