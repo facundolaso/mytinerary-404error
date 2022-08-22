@@ -8,9 +8,11 @@ import UnderConstruction from './pages/UnderConstruction.js';
 function App() {
   return (
     <div>
-
-    <UnderConstruction/>
-  
+    <PageLayout> 
+    {/* <Welcome/> */}
+    {/* <EventsCarousel/> */}
+    {/* <UnderConstruction/> */}
+    </PageLayout>
     </div>
   );
 }
