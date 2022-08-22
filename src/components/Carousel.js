@@ -40,6 +40,9 @@ export default function Carousel(props) {
         if (end < events.length) {
             setStart(start + range)
             setEnd(end + range)
+        } else {
+            setStart(0)
+            setEnd(range)
         }
     }
 
