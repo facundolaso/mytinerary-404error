@@ -1,0 +1,9 @@
+.Carousel-button {
+    background: none;
+    border: none;
+    width: 3rem;
+}
+
+.Carousel-button:hover {
+    background-color: rgba(240, 248, 255, 0.308);
+}
