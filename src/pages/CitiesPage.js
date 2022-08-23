@@ -6,9 +6,9 @@ import React from 'react'
 export default function CitiesPage() {
   return (
     <div>
-        <PageLayout>
+
             <Cities/>
-        </PageLayout>
+
     </div>
   )
 }

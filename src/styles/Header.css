@@ -1,0 +1,54 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+.Header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+   background:linear-gradient(190deg, #6676b6, #C8B6E2);
+   border-bottom: #495C83 1px solid;
+}
+
+.Header-link{
+    background-color: #495C83;
+    text-decoration: none;
+    color: white;
+    padding: .6rem;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    font-family: 'Sniglet', cursive;
+}
+
+.Header-nav :hover{
+    background-color: #C8B6E2;
+    color: black;
+}
+
+.Header-nav{
+    display: flex;
+    gap: 1rem;
+
+}
+
+.Header-logo{
+    text-align: center;
+    transform: translateX(-5rem);
+}
+
+.Header-link-logo{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: white;
+    -webkit-text-stroke: .1px rgba(0, 0, 0, 0.918);
+    font-family: 'Sniglet', cursive;  
+}
+
+
+.Header-image{
+    height: 6rem;
+}
+
+.Header-user{
+    height: 3rem;
+    
+}

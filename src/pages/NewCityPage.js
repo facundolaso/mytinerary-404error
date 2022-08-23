@@ -4,8 +4,6 @@ import PageLayout from '../layout/PageLayout.js'
 
 export default function NewCityPage() {
   return (
-    <PageLayout>
         <NewCity/>
-    </PageLayout>
   )
 }
