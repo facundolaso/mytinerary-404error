@@ -5,10 +5,12 @@ import CitiesPage from './pages/CitiesPage';
 import NewCityPage from './pages/NewCityPage';
 import UnderConstruction from './pages/UnderConstruction.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <PageLayout>
         <Routes>
           <Route path='/' element={<HomePage />} />
