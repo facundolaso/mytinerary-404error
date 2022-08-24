@@ -1,20 +1,42 @@
 import React from 'react'
 import '../styles/Footer.css'
+import { Link as LinkRouter } from 'react-router-dom'
 
 export default function Footer() {
+
+    const pages = [
+        { name: 'Home', to: '/' },
+        { name: 'Cities', to: '/cities' },
+        { name: 'New City', to: '/new-city' },
+    ]
+
+    const link = (page) => <LinkRouter className='Footer-anchor' to={page.to}>{page.name}</LinkRouter>
+
+    const scrollTop = () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+
+    }
+
+    const date = new Date()
+
     return (
         <div className='Footer-container'>
             <div>
                 <h2 className='Footer-h2'>
                     MyTinerary
                 </h2>
+                <h4>
+                    { date.toLocaleDateString() }
+                </h4>
             </div>
             <hr className='Footer-separator' />
-            <div className='Footer-links-container'>
-                <h4 className='Footer-h4'>Links of interest</h4>
-                <a className='Footer-anchor' href="">nav</a>
-                <a className='Footer-anchor' href="">nav</a>
-                <a className='Footer-anchor' href="">nav</a>
+            <div className="Footer-links-container">
+            <h4 className='Footer-h4'>Links</h4>
+                {pages.map(link)}
             </div>
             <hr className='Footer-separator' />
             <div className='Footer-rrss-container'>
@@ -27,6 +49,9 @@ export default function Footer() {
                     Engelberth Retamal
                 </a>
             </div>
+            <button className='Footer-button-arrow-up' onClick={scrollTop}>
+                <div className="Arrow-up" ></div>
+            </button>
         </div>
     )
 }
