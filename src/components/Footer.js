@@ -40,11 +40,11 @@ export default function Footer() {
             </div>
             <hr className='Footer-separator' />
             <div className='Footer-rrss-container'>
-                <a className='Footer-anchor' href="#">
+                <a className='Footer-anchor' href="https://github.com/facundolaso" target="_blank">
                     <img className='Footer-rrss-logo' src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="logo_github" />
                     Facundo Laso
                 </a>
-                <a className='Footer-anchor' href="#">
+                <a className='Footer-anchor' href="https://github.com/engelberthRetamal" target="_blank">
                     <img className='Footer-rrss-logo' src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="logo_github" />
                     Engelberth Retamal
                 </a>
