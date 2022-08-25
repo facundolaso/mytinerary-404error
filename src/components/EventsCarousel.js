@@ -15,9 +15,8 @@ export default function EventsCarousel() {
         { url: "https://images.pexels.com/photos/2193300/pexels-photo-2193300.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", title: "Sidney" },
         { url: "https://images.pexels.com/photos/3787839/pexels-photo-3787839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", title: "Dubai" },
     ]
-
-
+    
 return (
-    <Carousel data={events} range={4} interval={5}/>
+    <Carousel data={events} range={4} interval={5} slide={3}/>
 )
 }
