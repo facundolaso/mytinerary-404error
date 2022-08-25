@@ -1,0 +1,30 @@
+.cards-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.title-cities-page {
+    width: 100%;
+    text-align: center;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400");
+
+h1 {
+    margin-bottom: 0.5em;
+    font-weight: inherit;
+    line-height: 1.2;
+    color: #1c5b72;
+    font-size: 2.618em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media (min-width:800px) {
+    h1 {
+        font-size: 4.236em;
+        font-weight: 300
+    }
+}
