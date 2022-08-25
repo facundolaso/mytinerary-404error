@@ -10,10 +10,10 @@ export default function Footer() {
         { name: 'New City', to: '/new-city' },
     ]
 
-    const link = (page) => <LinkRouter className='Footer-anchor' to={page.to}>{page.name}</LinkRouter>
+    const link = (page) => <LinkRouter className='Footer-anchor' to={page.to} key={page.name}>{page.name}</LinkRouter>
 
     const scrollTop = () => {
-
+        
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -30,12 +30,12 @@ export default function Footer() {
                     MyTinerary
                 </h2>
                 <h4>
-                    { date.toLocaleDateString() }
+                    {date.toLocaleDateString()}
                 </h4>
             </div>
             <hr className='Footer-separator' />
             <div className="Footer-links-container">
-            <h4 className='Footer-h4'>Links</h4>
+                <h4 className='Footer-h4'>Links</h4>
                 {pages.map(link)}
             </div>
             <hr className='Footer-separator' />
@@ -49,6 +49,7 @@ export default function Footer() {
                     Engelberth Retamal
                 </a>
             </div>
+            <hr className='Footer-separator' />
             <button className='Footer-button-arrow-up' onClick={scrollTop}>
                 <div className="Arrow-up" ></div>
             </button>
