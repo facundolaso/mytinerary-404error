@@ -2,11 +2,11 @@ import '../../styles/carousel/Button.css'
 
 export default function Button(props) {
     if (!props.icon) {
-        throw new Error('Se requiere un string para la propiedad icon')
+        throw new Error('A string is required for the icon property')
     }
 
     if (!props.click) {
-        throw new Error('Se requiere una funcion para la propiedad click')
+        throw new Error('A function is required for the click property')
     }
     
     return (
