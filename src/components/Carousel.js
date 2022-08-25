@@ -12,21 +12,21 @@ export default function Carousel(props) {
 
     const events = props.data
 
+
     const eventView = (event) => (
-        <div className="Carousel-eventContainer">
+        <div className="Carousel-eventContainer" key={event.name}>
             <img src={event.url} />
             <p>{event.title}</p>
         </div>
     )
 
+
     useEffect(() => {
         let id = setInterval(function () {
             next()
         }, interval)
-
         setIntervalId(id)
-
-        return () => clearInterval(intervalId);
+        return () => clearInterval(id);
     }, [start])
 
     function previous() {
@@ -34,6 +34,11 @@ export default function Carousel(props) {
             setStart(start - range)
             setEnd(end - range)
         }
+        else { 
+            setStart(events.length-range) 
+            setEnd(events.length)
+        }
+        clearInterval(intervalId)
     }
 
     function next() {
@@ -44,25 +49,32 @@ export default function Carousel(props) {
             setStart(0)
             setEnd(range)
         }
+        clearInterval(intervalId)
     }
 
-    let leftArrow = <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+    let leftArrow = <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"  viewBox="0 0 16 16">
+        <path d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
     </svg>
-    let rightArrow = <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+    let rightArrow = <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"  viewBox="0 0 16 16">
+        <path d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
     </svg>
 
-
-
-    return (
-        <div>
-            <div className="slide">
-                <h2>Popular MYtineraries</h2>
-                <Button icon={leftArrow} click={previous} />
-                {events.slice(start, end).map(eventView)}
-                <Button icon={rightArrow} click={next} />
+return (
+    <div className='Carousel-contenedor'>
+        <div className='carousel-title'>
+        <h2>Popular MYtineraries</h2>
+        </div>
+        <div className="slide">
+            <div className='iz'>
+            <Button icon={leftArrow} click={previous} />
+            </div>
+            <div className='img-carousel'>
+            {events.slice(start, end).map(eventView)}
+            </div>
+            <div className='de'>
+            <Button icon={rightArrow} click={next} />
             </div>
         </div>
-    )
-}
+    </div>
+)}
+
