@@ -6,5 +6,6 @@
     min-height: 87.7vh;
 }
 .UC-container img{
-    height: 30rem;
+    width: 100vw;
+    padding: 2rem;
 }

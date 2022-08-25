@@ -65,13 +65,13 @@ return (
         <h2>Popular MYtineraries</h2>
         </div>
         <div className="slide">
-            <div className='iz'>
+            <div>
             <Button icon={leftArrow} click={previous} />
             </div>
             <div className='img-carousel'>
             {events.slice(start, end).map(eventView)}
             </div>
-            <div className='de'>
+            <div >
             <Button icon={rightArrow} click={next} />
             </div>
         </div>
