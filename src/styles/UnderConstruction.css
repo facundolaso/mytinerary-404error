@@ -1,0 +1,11 @@
+.UC-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 87.7vh;
+}
+.UC-container img{
+    width: 100vw;
+    padding: 2rem;
+}

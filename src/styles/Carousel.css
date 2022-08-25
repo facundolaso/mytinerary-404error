@@ -1,0 +1,130 @@
+.Carousel-contenedor{
+    background-color: #A8A4CE;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    text-align: center;
+
+
+}
+
+.carousel-title {
+    text-align: center;
+    width: 100%;
+    color: #495C83;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px white;
+    padding: 1.4rem;
+}
+
+.Carousel-eventContainer p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+}
+
+.Carousel-eventContainer img {
+    width: 25rem;
+    border-radius: 5px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.img-carousel {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1440px) {
+    .img-carousel {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Carousel-eventContainer img {
+        width: 25rem;
+        border-radius: 5px;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    }
+
+    .img-carousel {
+        width: 90%;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .Carousel-eventContainer img {
+        width: 18rem;
+        border-radius: 5px;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    }
+
+    .img-carousel {
+        width: 80%;
+
+    }
+
+}
+
+@media (max-width: 425px) {
+    .Carousel-eventContainer img {
+        width: 8.7rem;
+        border-radius: 5px;
+    }
+    
+    .img-carousel {
+        width: 100%;
+    
+    
+    }
+}
+
+
+
+@media (max-width: 375px) {
+    .Carousel-eventContainer img {
+        width: 7.2rem;
+        border-radius: 5px;
+    }
+    
+    .img-carousel {
+        width: 100%;
+    }
+    .carousel-title {
+        font-size: 1.3rem;
+        
+    }
+}
+
+
+
+@media (max-width: 320px) {
+    .slide p {
+        font-size: 15px;
+    }
+    .Carousel-eventContainer img {
+        width: 5rem;
+        border-radius: 5px;
+    
+    }
+    
+    .img-carousel {
+        width: 100%;
+    
+    }
+    .carousel-title {
+        font-size: 1.1rem;
+        
+    }
+
+}
+

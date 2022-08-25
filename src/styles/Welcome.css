@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+
+.Welcome-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(https://images.alphacoders.com/887/887585.jpg);
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+}
+
+.Welcome-container {
+    width: 30%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.644);
+    padding: 0 2rem;
+    padding-top: 1rem;
+    box-shadow: rgb(0, 0, 0) 0px 5px 15px;
+
+}
+
+
+.Welcome-h1 {
+    font-size: 5.5vw;
+    color: #495C83;
+    font-family: 'Sniglet', cursive;
+    -webkit-text-stroke: .1px rgba(0, 0, 0, 0.918);
+}
+
+.Welcome-slogan {
+    font-size: 1vw;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.Welcome-image {
+    width: 40%;
+}
+
+@media (max-width: 768px) {
+    .Welcome-container {
+        width: 70%;  
+    }
+    .Welcome-h1 {
+        font-size: 13vw;
+    }
+    
+    .Welcome-slogan {
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: 425px) {
+    .Welcome-container {
+        width: 90%;  
+    }
+    .Welcome-h1 {
+        font-size: 17vw;
+    }
+    
+    .Welcome-slogan {
+        font-size: 3.5vw;
+    }
+}
