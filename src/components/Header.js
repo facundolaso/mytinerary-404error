@@ -31,11 +31,11 @@ export default function Header() {
         </div>
 
         <div className='Header-logo'>              
-          <LinkRouter className='Header-link-logo' to={pages[0].to}>  <img className='Header-image' src="https://media.discordapp.net/attachments/993579792077176842/1010294134168358942/ico.png?width=843&height=676" alt="icono2" />
+          <LinkRouter className='Header-link-logo' to={pages[0].to}>  <img className='Header-image' src="https://media.discordapp.net/attachments/993579792077176842/1010294134168358942/ico.png?width=843&height=676" alt="icon2" />
           <h2>MyTinerary</h2> </LinkRouter>
         </div>
         <div className="dropdown">
-          <button className="dropbtn"><img className='Header-user' src="../../usuario.png" alt="icono3" /></button>
+          <button className="dropbtn"><img className='Header-user' src="../../user.png" alt="icon3" /></button>
           <div className="dropdown-content">
             <a href="#">Log in</a>
             <a href="#">Register</a>
