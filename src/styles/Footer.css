@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400");
+
 .Footer-container {
-    font-family: 'Sniglet', cursive;
+    font-family: 'Open Sans', sans-serif;
     background: linear-gradient(358deg, #6676b6, #C8B6E2);
     min-height: 10vh;
     display: flex;
