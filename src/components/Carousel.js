@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/Carousel.css';
 import Button from './carousel/Button';
 import { useEffect, useState } from 'react'
+import {Link as LinkRouter} from 'react-router-dom'
 
 export default function Carousel(props) {
     const range = props.range
@@ -9,13 +10,15 @@ export default function Carousel(props) {
     const [end, setEnd] = useState(start + range)
     const [intervalId, setIntervalId] = useState()
     const interval = props.interval * 1000
+    
+
 
     const cities = props.data
 
 
     const cityView = (city) => (
         <div className="Carousel-eventContainer" key={city.city}>
-            <LinkRouter to={''}><img src={city.photo} /></LinkRouter>
+            <LinkRouter to={'*'}><img src={city.photo} /></LinkRouter>
             <p>{city.city}</p>
         </div>
     )
