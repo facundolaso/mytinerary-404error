@@ -1,20 +1,28 @@
 import React from 'react'
 import '../styles/CityCard.css';
 import {Link as LinkRouter} from 'react-router-dom'
+import InputSearch from './InputSearch';
 
 export default function CityCard(props) {
 
     const dataCity = props.data
     console.log(dataCity.url)
 
+    const cityView = (city) => (
+        <div className='card' style={{ backgroundImage: `url(${city.photo})` }}>
+                    <div className='info'>
+                        <h2 className='title'>{city.city}</h2>
+                        <LinkRouter className="card-button" to={'*'}> Read More</LinkRouter>
+                    </div>
+                </div>
+    )
     return (
-
-        <div className='card' style={{ backgroundImage: `url(${dataCity.url})` }}>
-            <div className='info'>
-                <h1 className='title'>{dataCity.title}</h1>
-                <p className='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <LinkRouter className="card-button" to={'*'}> Read More</LinkRouter>
+        <div className='cards-container'>
+            <div className='title-cities-page'>
+            <h1 >Cities</h1>
+            <InputSearch/>
             </div>
-        </div>
+            {dataCity.map(cityView)} 
+        </div> 
     )
 }
