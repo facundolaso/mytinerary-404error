@@ -6,13 +6,11 @@ import InputSearch from './InputSearch';
 export default function CityCard(props) {
 
     const dataCity = props.data
-    console.log(dataCity.url)
-
     const cityView = (city) => (
         <div className='card' style={{ backgroundImage: `url(${city.photo})` }}>
                     <div className='info'>
                         <h2 className='title'>{city.city}</h2>
-                        <LinkRouter className="card-button" to={'*'}> Read More</LinkRouter>
+                        <LinkRouter className="card-button" to={`/details?id=${city._id}`}> Read More</LinkRouter>
                     </div>
                 </div>
     )
