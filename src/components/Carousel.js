@@ -10,16 +10,15 @@ export default function Carousel(props) {
     const [intervalId, setIntervalId] = useState()
     const interval = props.interval * 1000
 
-    const events = props.data
+    const cities = props.data
 
 
-    const eventView = (event) => (
-        <div className="Carousel-eventContainer" key={event.name}>
-            <img src={event.url} />
-            <p>{event.title}</p>
+    const cityView = (city) => (
+        <div className="Carousel-eventContainer" key={city.city}>
+            <LinkRouter to={''}><img src={city.photo} /></LinkRouter>
+            <p>{city.city}</p>
         </div>
     )
-
 
     useEffect(() => {
         let id = setInterval(function () {
@@ -35,14 +34,14 @@ export default function Carousel(props) {
             setEnd(end - range)
         }
         else { 
-            setStart(events.length-range) 
-            setEnd(events.length)
+            setStart(cities.length-range) 
+            setEnd(cities.length)
         }
         clearInterval(intervalId)
     }
 
     function next() {
-        if (end < events.length) {
+        if (end < cities.length) {
             setStart(start + range)
             setEnd(end + range)
         } else {
@@ -69,7 +68,7 @@ return (
             <Button icon={leftArrow} click={previous} />
             </div>
             <div className='img-carousel'>
-            {events.slice(start, end).map(eventView)}
+            {cities.slice(start, end).map(cityView)}
             </div>
             <div >
             <Button icon={rightArrow} click={next} />
