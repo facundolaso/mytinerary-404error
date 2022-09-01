@@ -10,7 +10,7 @@
     align-items: center;
     color: white;
     padding: 1rem;
-    border-top: #495C83 1px solid;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     text-align: center;
 }
 
