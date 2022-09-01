@@ -5,6 +5,7 @@ const pages = [
     {name: 'Home'  ,  to:'/'},
     {name:  'Cities' ,  to: '/cities'},
     {name: 'New City' ,  to: '/new-city'},
+    {name: 'Edit City' ,  to: '/edit-city'}
 ]
 
 const link = (page) => <LinkRouter className='Header-link' to={page.to} key={page.name}><span>{page.name}</span></LinkRouter>
