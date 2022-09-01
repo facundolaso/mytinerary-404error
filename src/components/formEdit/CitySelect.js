@@ -14,7 +14,7 @@ export default function CitySelect() {
     },[])
 
     console.log(cities)
-    const inputForm = (city) => <option  name={city.city} value={city.city} >{city.city}</option>
+    const inputForm = (city) => <option className="option" name={city.city} value={city.city} >{city.city}</option>
 
 
   return (
