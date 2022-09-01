@@ -2,10 +2,13 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     line-height: 28px;
     align-items: center;
     position: relative;
     max-width: 190px;
+    margin-top: 2rem;
 }
 
 .input {
@@ -20,6 +23,7 @@
     background-color: #f3f3f4;
     color: #0d0c22;
     transition: .3s ease;
+    border: 1px solid black;
 }
 
 .input::placeholder {
@@ -34,10 +38,11 @@ input:hover {
     box-shadow: 0 0 0 4px #d4ccf5;
 }
 
-.icon {
+.group .icon {
     position: absolute;
     left: 1rem;
     fill: #9e9ea7;
+    top: 3.5rem;
     width: 1rem;
     height: 1rem;
 }

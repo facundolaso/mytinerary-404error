@@ -36,8 +36,6 @@ const inputForm = (inputData) => <input className="input" name={inputData.name} 
 
 const btnSubmit = function hizoClick(event) {
     alert('Hola');
-    event.preventDefault()
-    
 }
 export default function input() {
     return (

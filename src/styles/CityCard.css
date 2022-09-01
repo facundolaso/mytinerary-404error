@@ -99,7 +99,6 @@ p {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
-    padding: 2rem;
     justify-content: center;
 }
 

@@ -36,15 +36,13 @@ export default function InputEdit() {
             .then(response => setCities(response.data.response))
     }, [])
 
-    console.log(cities)
-    const inputSelect = (city) => <option name={city.city} value={city._id} >{city.city}</option>
+    const inputSelect = (city) => <option name={city.city} value={city._id} key={city._id}>{city.city} </option>
     const inputForm = (inputData) => <input className="input" name={inputData.name} placeholder={inputData.placeholder} type="text" key={inputData.name} />
     
     let selected = ""
     let urlEdit = ""
     const idEdit = (event) => {
         selected = event.target.value
-        console.log(selected)
         urlEdit = selected
     }
 
@@ -53,23 +51,18 @@ export default function InputEdit() {
     let formChange = (event) => {
         switch (event.target.name) {
             case "city":
-                console.log("Case city")
                 city = event.target.value
                 break;
             case "country":
-                console.log("Case country")
                 country = event.target.value
                 break;
             case "photo":
-                console.log("Case country")
                 photo = event.target.value
                 break;
             case "population":
-                console.log("Case country")
                 population = event.target.value
                 break;
             case "fundation":
-                console.log("Case country")
                 fundation = event.target.value
                 break;
         }

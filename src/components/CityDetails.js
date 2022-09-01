@@ -15,7 +15,7 @@ export default function CityDetails() {
         const id = params.get("id")
 
         axios.get(`http://localhost:4000/cities/${id}`)
-            .then(response => setCities(response.data.response))
+            .then(response => setCities(response.data.response));
     }, [])
 
     const navigate = useNavigate();
@@ -23,8 +23,9 @@ export default function CityDetails() {
     const back = () => {
         navigate(-1)
     }
-
+    
     return (
+        
         <div className='cards-container'>
         <div className='card-details' style={{ backgroundImage: `url(${cities.photo})` }}>
             <div className='info-details'>
@@ -34,7 +35,7 @@ export default function CityDetails() {
                 <p>Amount of population:</p>
                 <p>{cities.population}</p>
                 <p>Founded in:</p>
-                <p>{cities.fundation}</p>
+                <p>{(new Date(cities.fundation)).getFullYear().toLocaleString()}</p>
                 <button className='card-button' onClick={back}>Back</button>
             </div>
         </div>

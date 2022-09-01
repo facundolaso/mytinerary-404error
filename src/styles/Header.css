@@ -7,7 +7,7 @@
     align-items: center;
     padding: 1.5rem;
     background: linear-gradient(190deg, #6676b6, #C8B6E2);
-    border-bottom: #495C83 1px solid;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -18,7 +18,7 @@
 .Header-logo {
     display: flex;
     text-align: center;
-    transform: translateX(-6rem);
+    transform: translateX(-9rem);
 }
 
 .Header-link-logo {

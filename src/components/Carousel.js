@@ -18,7 +18,7 @@ export default function Carousel(props) {
 
     const cityView = (city) => (
         <div className="Carousel-eventContainer" key={city.city}>
-            <LinkRouter to={'*'}><img src={city.photo} /></LinkRouter>
+            <LinkRouter to={`/details?id=${city._id}`}><img src={city.photo} /></LinkRouter>
             <p>{city.city}</p>
         </div>
     )
