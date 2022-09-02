@@ -1,0 +1,9 @@
+.option {
+    width: 300px;
+}
+
+@media (max-width: 375px) {
+    .option {
+        width: 80%;
+    }
+}

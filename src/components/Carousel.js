@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/Carousel.css';
 import Button from './carousel/Button';
 import { useEffect, useState } from 'react'
+import {Link as LinkRouter} from 'react-router-dom'
 
 export default function Carousel(props) {
     const range = props.range
@@ -9,17 +10,18 @@ export default function Carousel(props) {
     const [end, setEnd] = useState(start + range)
     const [intervalId, setIntervalId] = useState()
     const interval = props.interval * 1000
+    
 
-    const events = props.data
+
+    const cities = props.data
 
 
-    const eventView = (event) => (
-        <div className="Carousel-eventContainer" key={event.name}>
-            <img src={event.url} />
-            <p>{event.title}</p>
+    const cityView = (city) => (
+        <div className="Carousel-eventContainer" key={city.city}>
+            <LinkRouter to={`/details?id=${city._id}`}><img src={city.photo} /></LinkRouter>
+            <p>{city.city}</p>
         </div>
     )
-
 
     useEffect(() => {
         let id = setInterval(function () {
@@ -35,14 +37,14 @@ export default function Carousel(props) {
             setEnd(end - range)
         }
         else { 
-            setStart(events.length-range) 
-            setEnd(events.length)
+            setStart(cities.length-range) 
+            setEnd(cities.length)
         }
         clearInterval(intervalId)
     }
 
     function next() {
-        if (end < events.length) {
+        if (end < cities.length) {
             setStart(start + range)
             setEnd(end + range)
         } else {
@@ -69,7 +71,7 @@ return (
             <Button icon={leftArrow} click={previous} />
             </div>
             <div className='img-carousel'>
-            {events.slice(start, end).map(eventView)}
+            {cities.slice(start, end).map(cityView)}
             </div>
             <div >
             <Button icon={rightArrow} click={next} />

@@ -1,0 +1,129 @@
+
+.City-container{
+    padding: 2rem;
+    
+}
+
+.card {
+    border-radius: 16px;
+    margin: 0;
+    width: 300px;
+    max-width: 100%;
+    height: 300px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+}
+.title {
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 24px;
+    font-size: 30px;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.87);
+    align-self: center;
+}
+
+.description {
+    margin: 0;
+    padding: 0 24px 24px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.87);
+    transform: translateY(100%) translateY(-88px) translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.info:before {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    filter: blur(10px);
+    background-size: cover;
+    opacity: 0.25;
+    transform: translateY(-100%) translateY(88px) translateZ(0);
+    transition: transform 0.5s ease-out;
+}
+
+.card:hover .info,
+.card:hover .info:before {
+    transform: translateY(0) translateZ(0);
+}
+
+.card-button {
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background: #495C83;
+    color: white;
+    font-weight: bold;
+    transition: 0.4s ease;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    align-self: center;
+}
+
+.card-button:hover {
+    background: #C8B6E2;
+    color: black;
+}
+
+p {
+    margin-bottom: 1.3em;
+    line-height: 1.618
+}
+
+@media (min-width:800px) {
+    p {
+        font-size: 1.3em
+    }
+}
+
+.cards-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.title-cities-page {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400");
+
+h1 {
+    margin-bottom: 0.5em;
+    font-weight: inherit;
+    line-height: 1.2;
+    color: #1c5b72;
+    font-size: 2.618em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media (min-width:800px) {
+    h1 {
+        font-size: 4.236em;
+        font-weight: 300
+    }
+}
