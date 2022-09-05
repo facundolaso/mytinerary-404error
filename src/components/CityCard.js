@@ -18,7 +18,7 @@ export default function CityCard({cities}) {
             <div className='title-cities-page'>
                 <h1 >Cities</h1>
             </div>
-            {cities.map(cityView)}
+            {cities?.response.map(cityView)}
         </div>
     )
 }
