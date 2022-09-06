@@ -3,6 +3,7 @@ import '../../styles/form/Input.css'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import CitySelect from './CitySelect'
+import api from '../../api'
 
 const form = [
     {
@@ -32,7 +33,7 @@ export default function InputEdit() {
     const [cities, setCities] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/cities`)
+        axios.get(api+'/cities')
             .then(response => setCities(response.data.response))
     }, [])
 
@@ -70,7 +71,7 @@ export default function InputEdit() {
 
     let sendEditedCity = (event) => {
         event.preventDefault()
-        axios.patch("http://localhost:4000/cities/"+urlEdit, { city: city, country: country, photo: photo, population: population, fundation: fundation });
+        axios.patch(api+'/cities/'+urlEdit, { city: city, country: country, photo: photo, population: population, fundation: fundation });
         alert("City Edited")
     }
 

@@ -4,7 +4,7 @@ const dataAPI = createApi({
     reducerPath: "dataAPI",
 
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:4000"
+        baseUrl: api
     }),
 
     endpoints: (builder) => ({

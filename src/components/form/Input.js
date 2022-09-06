@@ -2,12 +2,7 @@ import React from 'react'
 import '../../styles/form/Input.css'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
-
-// useEffect(()=>{
-//     axios.patch('http://localhost:4000/cities/new-city')
-//         .then(response => setCities(response.data.response))
-// },[])
-
+import api from '../../api'
 
 const form = [
     {
@@ -49,7 +44,7 @@ export default function input() {
                 </div>
                 <div className="input-wrapper">
                     <h1>Add new city</h1>
-                    <form className='input-form' action="http://localhost:4000/cities" method="Post" target="_blank" onSubmit={btnSubmit} >
+                    <form className='input-form' action="/cities" method="Post" target="_blank" onSubmit={btnSubmit} >
                         {form.map(inputForm)}
                         <input type="submit" className='submit-btn' value='Send'></input>
                     </form>
