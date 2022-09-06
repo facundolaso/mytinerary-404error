@@ -10,9 +10,13 @@ const dataAPI = createApi({
     endpoints: (builder) => ({
         getAllCities: builder.query({query: () => "/cities"}),
 
-        getCityName: builder.query({query: name => `/cities?city=${name}`})
+        getCityName: builder.query({query: name => `/cities?city=${name}`}),
+
+        getAllItineraries: builder.query({query: () => "/itineraries"}),
+
+        getItineraryCity: builder.query({query: id => `/itineraries?_id=${id}`})
     })
 })
 
 export default dataAPI
-export const {useGetAllCitiesQuery, useGetCityNameQuery} = dataAPI
+export const {useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery} = dataAPI
