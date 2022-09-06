@@ -4,12 +4,13 @@ import CityCard from './CityCard'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import '../styles/CardsContainer.css'
+import api from '../api'
 
 export default function InputAndCard() {
 
     const [cities, setCities] = useState([])
     const [find, setFind] = useState("")
-    const urlData = "http://localhost:4000/cities/?city="
+    const urlData = api+'cities/?city='
     
     useEffect(()=>{
         axios.get(`${urlData}${find}`)

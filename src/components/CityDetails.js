@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {Link as LinkRouter, useNavigate } from 'react-router-dom'
 import '../styles/Details.css'
+import api from '../api'
 
 
 export default function CityDetails() {
@@ -14,7 +15,7 @@ export default function CityDetails() {
         let params = new URLSearchParams(queryString)
         const id = params.get("id")
 
-        axios.get(`http://localhost:4000/cities/${id}`)
+        axios.get(api+`/cities/${id}`)
             .then(response => setCities(response.data.response));
     }, [])
 
