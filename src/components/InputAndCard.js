@@ -2,34 +2,31 @@ import React from 'react'
 import InputSearch from './InputSearch'
 import CityCard from './CityCard'
 import '../styles/CardsContainer.css'
-import { useGetAllCitiesQuery } from '../features/dataAPI'
+import { useGetAllCitiesQuery, useGetCityNameQuery } from '../features/dataAPI'
+import { useState } from 'react'
 
 export default function InputAndCard() {
 
-    const { data : cities,
-            error,
-            isLoading,
-            isSuccess,
-            isFailed,
-          } = useGetAllCitiesQuery()
-    // const [cities, setCities] = useState([])
-    // const [find, setFind] = useState("")
-    // const urlData = "http://localhost:4000/cities/?city="
+    const [find, setFind] = useState("")
     
-    // useEffect(()=>{
-    //     axios.get(`${urlData}${find}`)
-    //         .then(response => setCities(response.data.response))
-    // },[find])
+    let { data : cities  } = useGetAllCitiesQuery()
+    const { data : citiesFilter } = useGetCityNameQuery(find)
 
-    // function search(name) {
-    //     setFind(name)
-    // }
+    function search(name) {
+        setFind(name)
+    }
+
+    let citiesData
+    if (find == "") {
+      citiesData = cities
+    } else {
+      citiesData = citiesFilter
+    }
 
   return (
     <div className='container'>
-    <InputSearch/>
-    <CityCard cities={cities}>
-        
+    <InputSearch search={search}/>
+    <CityCard citiesData={citiesData}>
     </CityCard>
     </div>
     
