@@ -8,9 +8,11 @@ const dataAPI = createApi({
     }),
 
     endpoints: (builder) => ({
-        getAllCities: builder.query({query: () => "/cities"})
+        getAllCities: builder.query({query: () => "/cities"}),
+
+        getCityName: builder.query({query: name => `/cities?city=${name}`})
     })
 })
 
 export default dataAPI
-export const {useGetAllCitiesQuery} = dataAPI
+export const {useGetAllCitiesQuery, useGetCityNameQuery} = dataAPI
