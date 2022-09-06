@@ -10,7 +10,7 @@ export default function InputAndCard() {
 
     const [cities, setCities] = useState([])
     const [find, setFind] = useState("")
-    const urlData = api+'cities/?city='
+    const urlData = api+'/cities/?city='
     
     useEffect(()=>{
         axios.get(`${urlData}${find}`)
