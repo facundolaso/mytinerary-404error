@@ -1,40 +1,47 @@
 import React from "react";
 import '../styles/ItineraryCard.css'
-
-
-
+import { useGetItineraryCityQuery, } from '../features/dataAPI'
 
 export default function Itinerary() {
-  return (
-      <div class="itinerary-container">
-  <div class="itinerary-card">
-    <div class="itinerary-card-body">
-      <span class="itinerary-tag tag-teal">City Name</span>
-      <h4>
-       Itinerary Name:
-      </h4>
-      <p>
-        Duration
-      </p>
-      <p>
-        $ PRICE
-      </p>
-      <p>
-        Tags
-      </p>
-      <div class="itinerary-user">
-        <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-        <div class="itinerary-user-info">
-          <h5>Name User</h5>
-          <small>LIKES</small>
+  let queryString = window.location.search
+  let params = new URLSearchParams(queryString)
+  const id = params.get("id")
+
+  let { data: itineraries } = useGetItineraryCityQuery(id)
+
+  const itineraryView = (itinerary) => (
+
+    <div className="itinerary-card" key={itinerary._id}>
+      <div className="itinerary-card-body">
+        <span className="itinerary-tag tag-teal">{itinerary.city.city}</span>
+        <h4>
+          Itinerary Name: {itinerary.name}
+        </h4>
+        <p>
+          Duration  {itinerary.duration}
+        </p>
+        <p>
+          $ PRICE {itinerary.price}
+        </p>
+        <p>
+          Tags: {itinerary.tags}
+        </p>
+        <div className="itinerary-user">
+          <img src={itinerary.user.photo} alt="user" />
+          <div className="itinerary-user-info">
+            <h5>{itinerary.user.name}</h5>
+            <small>LIKES: {itinerary.likes}</small>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  </div>
-      
-  
-    
+
+  ) 
+
+  return (
+
+    <div className="itinerary-container">
+      {itineraries?.response.map(itineraryView)}
+    </div>
   )
 }
