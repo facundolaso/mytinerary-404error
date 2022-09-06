@@ -3,7 +3,7 @@ import '../styles/CityCard.css';
 import { Link as LinkRouter } from 'react-router-dom'
 import InputSearch from './InputSearch';
 
-export default function CityCard({cities}) {
+export default function CityCard({citiesData}) {
 
     const cityView = (city) => (
         <div className='card' key={city._id} style={{ backgroundImage: `url(${city.photo})` }}>
@@ -13,12 +13,23 @@ export default function CityCard({cities}) {
             </div>
         </div>
     )
+
+    let show
+    if (citiesData?.response.length > 0) {
+        show = citiesData?.response.map(cityView)
+
+    } else {
+        show = "There are no cities to display, please try again"
+    }
+
     return (
         <div className='cards-container'>
             <div className='title-cities-page'>
                 <h1 >Cities</h1>
             </div>
-            {cities.map(cityView)}
+            {
+                show
+            }
         </div>
     )
 }

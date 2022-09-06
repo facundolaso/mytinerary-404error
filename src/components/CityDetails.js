@@ -27,8 +27,8 @@ export default function CityDetails() {
     
     return (
         
-        <div className='cards-container'>
-        <div className='card-details' style={{ backgroundImage: `url(${cities.photo})` }}>
+        <div className='cards-container-details'>
+        <div className='card-details-details' style={{ backgroundImage: `url(${cities.photo})` }}>
             <div className='info-details'>
                 <h1 className='title-details'>{cities.city}</h1>
                 <hr className='separator'/>
