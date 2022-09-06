@@ -14,7 +14,7 @@ const dataAPI = createApi({
 
         getAllItineraries: builder.query({query: () => "/itineraries"}),
 
-        getItineraryCity: builder.query({query: id => `/itineraries?_id=${id}`})
+        getItineraryCity: builder.query({query: id => `/itineraries?city=${id}`})
     })
 })
 
