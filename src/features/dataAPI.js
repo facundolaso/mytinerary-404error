@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import api from '../api'
 
 const dataAPI = createApi({
     reducerPath: "dataAPI",
@@ -14,9 +15,12 @@ const dataAPI = createApi({
 
         getAllItineraries: builder.query({query: () => "/itineraries"}),
 
-        getItineraryCity: builder.query({query: id => `/itineraries?city=${id}`})
+        getItineraryCity: builder.query({query: id => `/itineraries?city=${id}`}),
+
+        getActivitieItinerary: builder.query({query: id => `/activities?itinerary=${id}`})
+
     })
 })
 
 export default dataAPI
-export const {useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery} = dataAPI
+export const {useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery, useGetActivitieItineraryQuery} = dataAPI
