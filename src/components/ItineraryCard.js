@@ -1,6 +1,8 @@
 import React from "react";
 import '../styles/ItineraryCard.css'
 import { useGetItineraryCityQuery, } from '../features/dataAPI'
+import Activities from "./Activities";
+
 
 export default function Itinerary() {
   let queryString = window.location.search
@@ -10,7 +12,7 @@ export default function Itinerary() {
   let { data: itineraries } = useGetItineraryCityQuery(id)
 
   const itineraryView = (itinerary) => (
-
+    
     <div className="itinerary-card" key={itinerary._id}>
       <div className="itinerary-card-body">
         <span className="itinerary-tag tag-teal">{itinerary.city.city}</span>
@@ -33,13 +35,13 @@ export default function Itinerary() {
             <small>LIKES: {itinerary.likes}</small>
           </div>
         </div>
+        <Activities itinerary={itinerary._id}/>
       </div>
     </div>
 
-  ) 
-
-  return (
-
+) 
+return (
+  
     <div className="itinerary-container">
       {itineraries?.response.map(itineraryView)}
     </div>
