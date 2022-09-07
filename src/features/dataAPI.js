@@ -9,6 +9,8 @@ const dataAPI = createApi({
     }),
 
     endpoints: (builder) => ({
+        addCity: builder.mutation({query: city => ({url: "/cities", method: "POST", body: city})}),
+
         getAllCities: builder.query({query: () => "/cities"}),
 
         getCityName: builder.query({query: name => `/cities?city=${name}`}),
@@ -21,10 +23,8 @@ const dataAPI = createApi({
 
         getCommentsItinerary: builder.query({query: id => `/comments?itinerary=${id}`})
 
-
-
     })
 })
 
 export default dataAPI
-export const {useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery, useGetActivitieItineraryQuery, useGetCommentsItineraryQuery} = dataAPI
+export const {useAddCityMutation, useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery, useGetActivitieItineraryQuery, useGetCommentsItineraryQuery} = dataAPI
