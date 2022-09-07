@@ -17,10 +17,14 @@ const dataAPI = createApi({
 
         getItineraryCity: builder.query({query: id => `/itineraries?city=${id}`}),
 
-        getActivitieItinerary: builder.query({query: id => `/activities?itinerary=${id}`})
+        getActivitieItinerary: builder.query({query: id => `/activities?itinerary=${id}`}),
+
+        getCommentsItinerary: builder.query({query: id => `/comments?itinerary=${id}`})
+
+
 
     })
 })
 
 export default dataAPI
-export const {useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery, useGetActivitieItineraryQuery} = dataAPI
+export const {useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery, useGetActivitieItineraryQuery, useGetCommentsItineraryQuery} = dataAPI
