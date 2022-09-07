@@ -12,9 +12,6 @@ export default function Activities({itinerary}) {
         <div key={activity._id} className='activity-info'>                 
             <div>
                 <h3>{activity.name}</h3>  
-            </div>
-            <div>
-                <h3>{activity.itinerary.name}</h3>        
             </div>   
             <div>
                 <img src={activity.photo} alt="image"/>
