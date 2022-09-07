@@ -42,11 +42,11 @@
     padding: 2px 10px;
     text-transform: uppercase;
     cursor: pointer;
-}
-
-.itinerary-tag-teal {
     background-color: #ad88e9;
 }
+
+
+
 
 .itinerary-card-body p {
     font-size: 15px;
