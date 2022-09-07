@@ -56,9 +56,13 @@
 .itinerary-user {
     display: flex;
     margin-top: auto;
+    border-bottom: 1px solid #666dce ;
+    width: 100%;
+    padding: 10px;
 }
 
 .itinerary-user img {
+    object-fit: cover;
     border-radius: 50%;
     width: 40px;
     height: 40px;
