@@ -2,6 +2,9 @@ import React from "react";
 import '../styles/ItineraryCard.css'
 import { useGetItineraryCityQuery, } from '../features/dataAPI'
 import Activities from "./Activities";
+import Comments from "./Comments";
+
+
 
 
 export default function Itinerary() {
@@ -17,13 +20,13 @@ export default function Itinerary() {
       <div className="itinerary-card-body">
         <span className="itinerary-tag tag-teal">{itinerary.city.city}</span>
         <h4>
-          Itinerary Name: {itinerary.name}
+          {itinerary.name} Itinerary 
         </h4>
         <p>
-          Duration  {itinerary.duration}
+          Duration: {itinerary.duration}
         </p>
         <p>
-          $ PRICE {itinerary.price}
+          Price: {itinerary.price}
         </p>
         <p>
           Tags: {itinerary.tags}
@@ -32,10 +35,11 @@ export default function Itinerary() {
           <img src={itinerary.user.photo} alt="user" />
           <div className="itinerary-user-info">
             <h5>{itinerary.user.name}</h5>
-            <small>LIKES: {itinerary.likes}</small>
+            <small>Likes: {itinerary.likes}</small>
           </div>
         </div>
         <Activities itinerary={itinerary._id}/>
+        <Comments itinerary={itinerary._id}/>
       </div>
     </div>
 
