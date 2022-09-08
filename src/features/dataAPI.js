@@ -9,22 +9,23 @@ const dataAPI = createApi({
     }),
 
     endpoints: (builder) => ({
-        addCity: builder.mutation({query: city => ({url: "/cities", method: "POST", body: city})}),
+        addCity: builder.mutation({ query: city => ({ url: "/cities", method: "POST", body: city }) }),
 
-        getAllCities: builder.query({query: () => "/cities"}),
+        getAllCities: builder.query({ query: () => "/cities" }),
 
-        getCityName: builder.query({query: name => `/cities?city=${name}`}),
+        getCityName: builder.query({ query: name => `/cities?city=${name}` }),
 
-        getAllItineraries: builder.query({query: () => "/itineraries"}),
+        updateCity: builder.mutation({ query: ({ id, ...patch }) => ({ url: `/cities/${id}`, method: "PATCH", body: patch }) }),
 
-        getItineraryCity: builder.query({query: id => `/itineraries?city=${id}`}),
+        getAllItineraries: builder.query({ query: () => "/itineraries" }),
 
-        getActivitieItinerary: builder.query({query: id => `/activities?itinerary=${id}`}),
+        getItineraryCity: builder.query({ query: id => `/itineraries?city=${id}` }),
 
-        getCommentsItinerary: builder.query({query: id => `/comments?itinerary=${id}`})
+        getActivitieItinerary: builder.query({ query: id => `/activities?itinerary=${id}` }),
 
+        getCommentsItinerary: builder.query({ query: id => `/comments?itinerary=${id}` })
     })
 })
 
 export default dataAPI
-export const {useAddCityMutation, useGetAllCitiesQuery, useGetCityNameQuery, useGetAllItinerariesQuery , useGetItineraryCityQuery, useGetActivitieItineraryQuery, useGetCommentsItineraryQuery} = dataAPI
+export const { useAddCityMutation, useGetAllCitiesQuery, useGetCityNameQuery, useUpdateCityMutation, useGetAllItinerariesQuery, useGetItineraryCityQuery, useGetActivitieItineraryQuery, useGetCommentsItineraryQuery } = dataAPI
