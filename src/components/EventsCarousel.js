@@ -1,5 +1,5 @@
 import Carousel from './Carousel'
-import { useGetAllCitiesQuery, useGetCityNameQuery } from '../features/dataAPI'
+import { useGetAllCitiesQuery } from '../features/dataAPI'
 
 
 export default function EventsCarousel() {

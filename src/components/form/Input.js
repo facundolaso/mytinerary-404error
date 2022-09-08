@@ -2,11 +2,6 @@ import React from 'react'
 import '../../styles/form/Input.css'
 import { useAddCityMutation } from '../../features/dataAPI'
 
-
-
-
-
-
 const form = [
     {
         name: "city",

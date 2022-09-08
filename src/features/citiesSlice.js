@@ -5,20 +5,7 @@ const citiesSlice = createSlice({
     initialState: {
         cities : []
     },
-    reducers: {
-        getCity: (state) => {
-            state.cities = [
-                {
-                    city: "Barcelona",
-                    country: "España",
-                    photo: "https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                    population: 1620000000,
-                    fundation: "2022",
-                }
-            ]
-        }
-    }
+    reducers: { }
 })
 
-export const { getCity } = citiesSlice.actions
 export default citiesSlice.reducer
