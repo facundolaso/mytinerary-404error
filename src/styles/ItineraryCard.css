@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+.container-mytinerary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container-mytinerary button{
+    margin: 1rem;
 
-
+}
 .itinerary-container {
     display: flex;
     justify-content: center;
