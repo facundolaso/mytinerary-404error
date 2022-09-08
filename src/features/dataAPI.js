@@ -23,7 +23,7 @@ const dataAPI = createApi({
         
         getActivitieItinerary: builder.query({ query: id => `/activities?itinerary=${id}` }),
 
-        getCommentsItinerary: builder.query({ query: id => `/comments?itinerary=${id}` })
+        getCommentsItinerary: builder.query({ query: id => `/comments?itinerary=${id}` }),
 
         getItineraryUser: builder.query({query: id => `/itineraries?user=${id}`}),
 

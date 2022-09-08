@@ -14,7 +14,6 @@ export default function CitySelect() {
             .then(response => setCities(response.data.response))
     },[])
 
-    console.log(cities)
     const inputForm = (city) => <option className="option" name={city.city} value={city.city} >{city.city}</option>
 
 

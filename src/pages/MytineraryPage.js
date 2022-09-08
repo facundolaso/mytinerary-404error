@@ -14,7 +14,6 @@ export default function MytineraryPage() {
             navigate(-1)
         }
     let { data: itineraries } = useGetItineraryUserQuery("63164a517bfd9487c2451605")
-    console.log(itineraries)
     return (
         <div className='container-mytinerary'>
             <button className='card-button' onClick={back}>Back</button>

@@ -2,7 +2,6 @@ import React from 'react'
 import CityDetails from '../components/CityDetails'
 import Itinerary from '../components/ItineraryCard'
 import '../styles/Details.css'
-import { useEffect } from 'react'
 import { useGetItineraryCityQuery, useGetDetailCityQuery} from '../features/dataAPI'
 
 export default function DetailsPage() {

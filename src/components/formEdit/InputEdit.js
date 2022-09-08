@@ -1,11 +1,7 @@
 import React from 'react'
 import '../../styles/form/Input.css'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import api from '../../api'
 import { useUpdateCityMutation } from '../../features/dataAPI'
-import { useGetAllCitiesQuery, useGetCityNameQuery } from '../../features/dataAPI'
-
+import { useGetAllCitiesQuery } from '../../features/dataAPI'
 
 const form = [
     {
@@ -32,15 +28,9 @@ const form = [
 
 export default function InputEdit() {
 
-    let city, country, photo
-    let population, fundation
-
-
     let id
-    let current
     const idEdit = (event) => {
         id = event.target.value
-        current = event.target
     }
 
     let { data : cities  } = useGetAllCitiesQuery()
@@ -50,15 +40,13 @@ export default function InputEdit() {
         form.preventDefault()
         const newcity = {
             city: form.target.city.value,
-            country: country,
+            country: form.target.country.value,
             photo: form.target.photo.value,
             population: form.target.population.value,
             fundation: form.target.fundation.value,
             id
         };
-        console.log(form.target.city.value)
         await updateCity(newcity);
-        console.log(form.target.city)
         form.target.reset()
     }
 
@@ -71,7 +59,6 @@ export default function InputEdit() {
     const inputSelect = (city) => <option name={city.city} value={city._id} key={city._id}>{city.city} </option>
     const inputForm = (inputData) => <input className="input" name={inputData.name} placeholder={inputData.placeholder} type="text" key={inputData.name} />
     
-
 
     return (
         <div className='new-city-container'>
