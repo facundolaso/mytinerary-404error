@@ -2,8 +2,10 @@ import React from 'react'
 import '../../styles/form/Input.css'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import CitySelect from './CitySelect'
 import api from '../../api'
+import { useUpdateCityMutation } from '../../features/dataAPI'
+import { useGetAllCitiesQuery, useGetCityNameQuery } from '../../features/dataAPI'
+
 
 const form = [
     {
@@ -30,50 +32,46 @@ const form = [
 
 export default function InputEdit() {
 
-    const [cities, setCities] = useState([])
+    let city, country, photo
+    let population, fundation
 
-    useEffect(() => {
-        axios.get(api+'/cities')
-            .then(response => setCities(response.data.response))
-    }, [])
+
+    let id
+    let current
+    const idEdit = (event) => {
+        id = event.target.value
+        current = event.target
+    }
+
+    let { data : cities  } = useGetAllCitiesQuery()
+    const [ updateCity, result ] = useUpdateCityMutation()
+
+    const handleAddTask = async (form) => {
+        form.preventDefault()
+        const newcity = {
+            city: form.target.city.value,
+            country: country,
+            photo: form.target.photo.value,
+            population: form.target.population.value,
+            fundation: form.target.fundation.value,
+            id
+        };
+        console.log(form.target.city.value)
+        await updateCity(newcity);
+        console.log(form.target.city)
+        form.target.reset()
+    }
+
+    if (result.isSuccess) {
+        alert('City edited successfully!!')
+    } else if (result.isError){
+        alert('City not edited')
+    }
 
     const inputSelect = (city) => <option name={city.city} value={city._id} key={city._id}>{city.city} </option>
     const inputForm = (inputData) => <input className="input" name={inputData.name} placeholder={inputData.placeholder} type="text" key={inputData.name} />
     
-    let selected = ""
-    let urlEdit = ""
-    const idEdit = (event) => {
-        selected = event.target.value
-        urlEdit = selected
-    }
 
-    let city, country, photo = ""
-    let population, fundation = 0
-    let formChange = (event) => {
-        switch (event.target.name) {
-            case "city":
-                city = event.target.value
-                break;
-            case "country":
-                country = event.target.value
-                break;
-            case "photo":
-                photo = event.target.value
-                break;
-            case "population":
-                population = event.target.value
-                break;
-            case "fundation":
-                fundation = event.target.value
-                break;
-        }
-    }
-
-    let sendEditedCity = (event) => {
-        event.preventDefault()
-        axios.patch(api+'/cities/'+urlEdit, { city: city, country: country, photo: photo, population: population, fundation: fundation });
-        alert("City Edited")
-    }
 
     return (
         <div className='new-city-container'>
@@ -87,11 +85,11 @@ export default function InputEdit() {
                 <div className="input-wrapper">
                     <h1>Modify a city</h1>
                     <select className="option" onChange={idEdit}>
-                        {cities.map(inputSelect)}
+                        {cities?.response.map(inputSelect)}
                     </select>
-                    <form className='input-form' action='' onChange={formChange} method="post" target="_blank" >
+                    <form className='input-form' action='' onSubmit={handleAddTask} method="post" target="_blank" >
                         {form.map(inputForm)}
-                        <input type="submit" className='submit-btn' onClick={sendEditedCity} value='Send'></input>
+                        <input type="submit" className='submit-btn' value='Send'></input>
                     </form>
                 </div>
             </div>
