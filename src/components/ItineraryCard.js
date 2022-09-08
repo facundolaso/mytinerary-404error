@@ -1,21 +1,14 @@
 import React from "react";
 import '../styles/ItineraryCard.css'
-import { useGetItineraryCityQuery, } from '../features/dataAPI'
 import Activities from "./Activities";
 import Comments from "./Comments";
 
 
-
-
-export default function Itinerary() {
-  let queryString = window.location.search
-  let params = new URLSearchParams(queryString)
-  const id = params.get("id")
-
-  let { data: itineraries } = useGetItineraryCityQuery(id)
+export default function Itinerary({search}) {
+  let itineraries = search
 
   const itineraryView = (itinerary) => (
-    
+
     <div className="itinerary-card" key={itinerary._id}>
       <div className="itinerary-card-body">
         <span className="itinerary-tag tag-teal">{itinerary.city.city}</span>
@@ -42,10 +35,9 @@ export default function Itinerary() {
         <Comments itinerary={itinerary._id}/>
       </div>
     </div>
-
+    
 ) 
 return (
-  
     <div className="itinerary-container">
       {itineraries?.response.map(itineraryView)}
     </div>
