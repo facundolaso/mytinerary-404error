@@ -8,6 +8,8 @@ import EditCityPage from './pages/EditCityPage';
 import UnderConstruction from './pages/UnderConstruction.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop';
+import MytineraryPage from './pages/MytineraryPage';
+
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path='/details' element={<DetailsPage/>} />
           <Route path='/edit-city' element={<EditCityPage/>} />
           <Route path='*' element={<UnderConstruction />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/mytinerary' element={<MytineraryPage/>} />         
         </Routes>
       </PageLayout>
     </BrowserRouter>

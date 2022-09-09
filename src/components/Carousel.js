@@ -10,11 +10,9 @@ export default function Carousel(props) {
     const [end, setEnd] = useState(start + range)
     const [intervalId, setIntervalId] = useState()
     const interval = props.interval * 1000
+    const limitSlides = (props.slides * range)
     
-
-
-    const cities = props.data
-
+    let cities = props.cities?.response
 
     const cityView = (city) => (
         <div className="Carousel-eventContainer" key={city.city}>
@@ -44,7 +42,7 @@ export default function Carousel(props) {
     }
 
     function next() {
-        if (end < cities.length) {
+        if (start < limitSlides-range) {
             setStart(start + range)
             setEnd(end + range)
         } else {
@@ -71,7 +69,7 @@ return (
             <Button icon={leftArrow} click={previous} />
             </div>
             <div className='img-carousel'>
-            {cities.slice(start, end).map(cityView)}
+            {cities?.slice(start, end).map(cityView)}
             </div>
             <div >
             <Button icon={rightArrow} click={next} />
