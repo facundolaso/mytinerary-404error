@@ -92,3 +92,9 @@
     font-size: 14px;
     font-weight: 600;
   }
+
+  .google-btn{
+    display: flex;
+    width: 5rem;
+    transform: translateY(-2.5rem);
+  }
