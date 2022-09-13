@@ -20,4 +20,4 @@ const usersSlice = createApi({
 
 export default usersSlice
 
-export const {useSignUpMutation, usesignInMutation, usesignOutMutation} = usersSlice
+export const {useSignUpMutation, useSignInMutation, useSignOutMutation} = usersSlice
