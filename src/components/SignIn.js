@@ -1,6 +1,9 @@
 import React from 'react'
 import { useSignInMutation } from '../features/usersSlice'
 import '../styles/SignIn.css'
+import SignInGoogle from '../components/SignInGoogle'
+
+
 
 const newUserForm = [
     {
@@ -28,12 +31,10 @@ export default function SignIn() {
         await signIn(accesData);
         form.target.reset()
     }
-
     if (result.isSuccess) {
-        alert("Access granted!")
-    } else if (result.isError) {
-        alert("Access denied!")
+        console.log(result.data.response)   
     }
+
 
     return (
         <div className="signIn-container">
@@ -43,6 +44,7 @@ export default function SignIn() {
                 {newUserForm.map(inputForm)}
 
                 <input type="submit" className="signIn-submitBtn" value="Sign In" />
+                <SignInGoogle/>
             </form>
         </div>
     )
