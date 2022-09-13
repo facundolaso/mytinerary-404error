@@ -28,7 +28,7 @@ const newUserForm = [
     }
 ]
 
-const inputForm = (inputData) => <div class="inputContainer"><input type={inputData.type} class="input" name={inputData.name} disabled={inputData.disabled} /><label class="label">{inputData.name.toUpperCase()}</label></div>
+const inputForm = (inputData) => <div className="signUp-inputContainer"><input type={inputData.type} className="signUp-input" name={inputData.name} disabled={inputData.disabled} /><label className="signUp-label">{inputData.name.toUpperCase()}</label></div>
 
 
 export default function SignUp(userRole) {
@@ -54,13 +54,13 @@ export default function SignUp(userRole) {
 
     return (
         <>
-        <div class="signupFrm">
-    <form action="" class="form" onSubmit={handleAddTask}>
-      <h1 class="title">Sign up</h1>
+        <div className="signupFrm">
+    <form className="signUp-form" onSubmit={handleAddTask}>
+      <h1 className="signUp-title">Sign up</h1>
 
       {newUserForm.map(inputForm)}
 
-      <input type="submit" class="submitBtn" value="Sign up"/>
+      <input type="submit" className="signUp-submitBtn" value="Sign up"/>
     </form>
   </div>
         </>
