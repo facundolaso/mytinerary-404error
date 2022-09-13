@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop';
 import MytineraryPage from './pages/MytineraryPage';
 import SignUpPage from './pages/SignUpPage'
+import SignInPage from './pages/SignInPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='/edit-city' element={<EditCityPage/>} />
           <Route path='/mytinerary' element={<MytineraryPage/>} />
           <Route path='/signup' element={<SignUpPage/>} />
+          <Route path='/signin' element={<SignInPage/>} />
           <Route path='*' element={<UnderConstruction />} />
         </Routes>
       </PageLayout>
