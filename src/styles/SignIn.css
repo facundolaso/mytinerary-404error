@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5rem 0;
+    padding: 5rem 1rem;
+    min-height: 66.8vh;
 }
 
 .signIn-form {

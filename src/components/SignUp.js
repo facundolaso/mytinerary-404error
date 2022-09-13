@@ -1,5 +1,7 @@
 import '../styles/SignUp.css'
 import { useSignUpMutation } from '../features/usersSlice'
+import SignUpGoogle from '../components/SignUpGoogle'
+
 
 const newUserForm = [
     {
@@ -61,6 +63,7 @@ export default function SignUp(userRole) {
       {newUserForm.map(inputForm)}
 
       <input type="submit" className="signUp-submitBtn" value="Sign up"/>
+      <SignUpGoogle/>
     </form>
   </div>
         </>
