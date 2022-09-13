@@ -11,9 +11,13 @@ const usersSlice = createApi({
     endpoints: (builder) => ({
         signUp: builder.mutation({ query: user => ({ url: "/auth/signup", method: "POST", body: user }) }),
 
+        signIn: builder.mutation({ query: user => ({ url: "/auth/signin", method: "POST", body: user }) }),
+
+        signOut: builder.mutation({ query: user => ({ url: "/auth/signout", method: "POST", body: user }) })
+
     })
 })
 
 export default usersSlice
 
-export const {useSignUpMutation} = usersSlice
+export const {useSignUpMutation, usesignInMutation, usesignOutMutation} = usersSlice
