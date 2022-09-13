@@ -9,6 +9,7 @@ import UnderConstruction from './pages/UnderConstruction.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop';
 import MytineraryPage from './pages/MytineraryPage';
+import SignUpPage from './pages/SignUpPage'
 
 
 function App() {
@@ -22,9 +23,9 @@ function App() {
           <Route path='/new-city' element={<NewCityPage />} />
           <Route path='/details' element={<DetailsPage/>} />
           <Route path='/edit-city' element={<EditCityPage/>} />
+          <Route path='/mytinerary' element={<MytineraryPage/>} />
+          <Route path='/signup' element={<SignUpPage/>} />
           <Route path='*' element={<UnderConstruction />} />
-          <Route path='/' element={<HomePage />} />
-          <Route path='/mytinerary' element={<MytineraryPage/>} />         
         </Routes>
       </PageLayout>
     </BrowserRouter>
