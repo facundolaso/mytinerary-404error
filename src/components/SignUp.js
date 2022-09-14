@@ -23,19 +23,21 @@ const newUserForm = [
     },
     {
         name: "country",
-    },
-    {
-        name: "role",
-        disabled: ""
     }
 ]
 
 const inputForm = (inputData) => <div className="signUp-inputContainer"><input type={inputData.type} className="signUp-input" name={inputData.name} disabled={inputData.disabled} /><label className="signUp-label">{inputData.name.toUpperCase()}</label></div>
 
 
-export default function SignUp(userRole) {
+export default function SignUp({loggedUser}) {
 
     let [addUser, result] = useSignUpMutation()
+    let role
+    if (localStorage.getItem('loggedUser')) {
+        role = loggedUser.role
+    } else {
+        role = "user"
+    }
 
     const handleAddTask = async (form) => {
         form.preventDefault()
@@ -48,17 +50,19 @@ export default function SignUp(userRole) {
             photo: form.target.photo.value,
             country : form.target.country.value,
             from: "form",
-            role: form.target.role.value
+            role: role
         };
         await addUser(newUser);
         form.target.reset()
     }
 
+
+
     return (
         <>
         <div className="signupFrm">
     <form className="signUp-form" onSubmit={handleAddTask}>
-      <h1 className="signUp-title">Sign up</h1>
+      {loggedUser?<h1 className="signUp-title">Sign up new admin</h1>:<h1 className="signUp-title">Sign up</h1>}
 
       {newUserForm.map(inputForm)}
 

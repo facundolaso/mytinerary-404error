@@ -32,7 +32,7 @@ export default function SignIn() {
         form.target.reset()
     }
     if (result.isSuccess) {
-        console.log(result.data.response)   
+        localStorage.setItem("loggedUser", JSON.stringify(result.data.response));
     }
 
 
