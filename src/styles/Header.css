@@ -124,7 +124,7 @@
     .hamburger-menu {
         position: absolute;
         display: block;
-        z-index: 3;
+        z-index: 11;
     }
 
 
