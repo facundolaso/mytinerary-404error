@@ -1,5 +1,6 @@
 import { Link as LinkRouter } from 'react-router-dom'
 import '../styles/Header.css';
+import { useSignOutMutation } from '../features/usersSlice';
 
 const pages = [
   { name: 'Home', to: '/' },
@@ -11,17 +12,38 @@ const pages = [
 
 const link = (page) => <LinkRouter className='Header-link' to={page.to} key={page.name}><span>{page.name}</span></LinkRouter>
 
-let show
-if (localStorage.getItem("loggedUser")) {
-  let { user } = JSON.parse(localStorage.getItem("loggedUser"))
-  show = <div className="dropdown-content">
-    <a href="#">{user.name}</a><a href="#">Sign out</a> </div>
-} else {
-  show = <div className="dropdown-content"><LinkRouter to="/signin" ><span>Sign In</span></LinkRouter>
-    <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
-}
+
+
 
 export default function Header() {
+  let [signOut, result] = useSignOutMutation()
+
+
+
+  let show
+  let userPhoto
+  if (localStorage.getItem("loggedUser")) {
+    let { user } = JSON.parse(localStorage.getItem("loggedUser"))
+    userPhoto = user.photo
+    show = <div className="dropdown-content">
+      <h4 className='user-name'>{user.name} </h4><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter> </div>
+
+    async function handleCredentialResponse() {
+
+      let userData = {
+        mail: user.mail,
+      }
+
+      await signOut(userData);
+      localStorage.removeItem("loggedUser");
+      window.location.reload()
+
+    }
+  } else {
+    show = <div className="dropdown-content"><LinkRouter to="/signin" ><span>Sign In</span></LinkRouter>
+      <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
+      userPhoto = '../../user.png'
+  }
 
   return (
     <div className="Header-container">
@@ -46,7 +68,7 @@ export default function Header() {
           <h2>MyTinerary</h2> </LinkRouter>
       </div>
       <div className="dropdown">
-        <button className="dropbtn"><img className='Header-user' src="../../user.png" alt="icon3" /></button>
+        <button className="dropbtn"><img className='Header-user' src={userPhoto} alt="icon3" /></button>
         {show}
       </div>
     </div>
