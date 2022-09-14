@@ -17,51 +17,53 @@ const adminPages = [
 const link = (page) => <LinkRouter className='Header-link' to={page.to} key={page.name}><span>{page.name}</span></LinkRouter>
 
 export default function Header() {
+  
   let [signOut, result] = useSignOutMutation()
 
-  let show
-  let showNavBar
   let userPhoto
   let loggedUser = {}
   if (localStorage.getItem("loggedUser")) {
     loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     userPhoto = loggedUser.user.photo
-    show = <div className="dropdown-content">
-      <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter> </div>
-
-    if (loggedUser.user.role == "admin") {
-      showNavBar = adminPages.map(link)
-      show = <div className="dropdown-content">
-      <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/signup" >Sign up</LinkRouter><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter> </div>
-    }
-
-    async function handleCredentialResponse() {
-
-      let userData = {
-        mail: loggedUser.mail,
-      }
-
-      await signOut(userData);
-      localStorage.removeItem("loggedUser");
-      window.location.reload()
-
-    }
   } else {
-    show = <div className="dropdown-content"><LinkRouter to="/signin" ><span>Sign In</span></LinkRouter>
-      <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
     userPhoto = '../../user.png'
   }
 
+  async function handleCredentialResponse() {
+
+    let userData = {
+      mail: loggedUser.mail,
+    }
+
+    await signOut(userData);
+    localStorage.removeItem("loggedUser");
+    window.location.reload()
+  }
 
   return (
     <div className="Header-container">
       <div className="Header-nav">
-        <div className='Header-link-normal '>
-          {pages.map(link)}
 
-          {showNavBar}
+        {loggedUser.user ? (
+          <div>
+            {loggedUser.user.role == "admin" ? (
+              <div className='Header-link-normal'>
+                {pages.map(link)}
+                {adminPages.map(link)}
+              </div>
 
-        </div>
+            ) : (
+              <div className='Header-link-normal'>
+                {pages.map(link)}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className='Header-link-normal'>
+            {pages.map(link)}
+          </div>
+        )}
+
         <div className="hamburger-menu">
           <input id="menu__toggle" type="checkbox" />
           <label className="menu__btn" htmlFor="menu__toggle">
@@ -69,7 +71,20 @@ export default function Header() {
           </label>
 
           <ul className="menu__box">
-            <li>{pages.map(link)}</li>
+            {loggedUser.user ? (
+              <>
+                {loggedUser.user.role == "admin" ? (
+                  <li>
+                    {pages.map(link)}
+                    {adminPages.map(link)}
+                  </li>
+                ) : (
+                  <li>{pages.map(link)}</li>
+                )}
+              </>
+            ) : (
+              <li>{pages.map(link)}</li>
+            )}
           </ul>
         </div>
       </div>
@@ -80,7 +95,22 @@ export default function Header() {
       </div>
       <div className="dropdown">
         <button className="dropbtn"><img className='Header-user' src={userPhoto} alt="icon3" /></button>
-        {show}
+        {loggedUser.user ? (
+          <>
+            {loggedUser.user.role == "admin" ? (
+              <div className="dropdown-content">
+                <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/signup" >Sign up</LinkRouter><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter>
+              </div>
+            ) : (
+              <div className="dropdown-content">
+              <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter>
+              </div>
+              )}
+          </>
+        ) : (
+          <div className="dropdown-content"><LinkRouter to="/signin" ><span>Sign In</span></LinkRouter>
+            <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
+        )}
       </div>
     </div>
   )
