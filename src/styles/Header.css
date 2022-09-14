@@ -36,6 +36,7 @@
 
 .Header-user {
     height: 3rem;
+    border-radius: 5rem;
 }
 
 .Header-link {
@@ -94,6 +95,10 @@
     transform: scale(0.95);
 }
 
+.user-name{
+    text-align: center;
+    padding: 1rem;
+}
 
 .hamburger-menu {
     display: none;
