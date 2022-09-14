@@ -19,6 +19,7 @@ export default function SignInGoogle() {
         }
 
         await signIn(googleData);
+        window.location.reload()
     }
     if (result.isSuccess) {
         localStorage.setItem("loggedUser", JSON.stringify(result.data.response));
