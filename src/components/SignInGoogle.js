@@ -21,7 +21,7 @@ export default function SignInGoogle() {
         await signIn(googleData);
     }
     if (result.isSuccess) {
-        console.log(result.data.response)   
+        localStorage.setItem("loggedUser", JSON.stringify(result.data.response));
     }
 
     useEffect(() => {
