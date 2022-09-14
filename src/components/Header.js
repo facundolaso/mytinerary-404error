@@ -1,37 +1,44 @@
 import { Link as LinkRouter } from 'react-router-dom'
 import '../styles/Header.css';
 import { useSignOutMutation } from '../features/usersSlice';
+import SignUp from './SignUp';
 
 const pages = [
   { name: 'Home', to: '/' },
   { name: 'Cities', to: '/cities' },
+  { name: 'Mytinerary', to: '/mytinerary' }
+]
+
+const adminPages = [
   { name: 'New City', to: '/new-city' },
   { name: 'Edit City', to: '/edit-city' },
-  { name: 'Mytinerary', to: '/mytinerary' }
 ]
 
 const link = (page) => <LinkRouter className='Header-link' to={page.to} key={page.name}><span>{page.name}</span></LinkRouter>
 
-
-
-
 export default function Header() {
   let [signOut, result] = useSignOutMutation()
 
-
-
   let show
+  let showNavBar
   let userPhoto
+  let loggedUser = {}
   if (localStorage.getItem("loggedUser")) {
-    let { user } = JSON.parse(localStorage.getItem("loggedUser"))
-    userPhoto = user.photo
+    loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    userPhoto = loggedUser.user.photo
     show = <div className="dropdown-content">
-      <h4 className='user-name'>{user.name} </h4><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter> </div>
+      <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter> </div>
+
+    if (loggedUser.user.role == "admin") {
+      showNavBar = adminPages.map(link)
+      show = <div className="dropdown-content">
+      <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/signup" >Sign up</LinkRouter><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter> </div>
+    }
 
     async function handleCredentialResponse() {
 
       let userData = {
-        mail: user.mail,
+        mail: loggedUser.mail,
       }
 
       await signOut(userData);
@@ -42,14 +49,18 @@ export default function Header() {
   } else {
     show = <div className="dropdown-content"><LinkRouter to="/signin" ><span>Sign In</span></LinkRouter>
       <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
-      userPhoto = '../../user.png'
+    userPhoto = '../../user.png'
   }
+
 
   return (
     <div className="Header-container">
       <div className="Header-nav">
         <div className='Header-link-normal '>
           {pages.map(link)}
+
+          {showNavBar}
+
         </div>
         <div className="hamburger-menu">
           <input id="menu__toggle" type="checkbox" />
