@@ -2,6 +2,7 @@ import React from 'react'
 import {Link as LinkRouter, useNavigate } from 'react-router-dom'
 import '../styles/Details.css'
 
+
 export default function CityDetails({search}) {
 
     const navigate = useNavigate();
@@ -11,6 +12,11 @@ export default function CityDetails({search}) {
     }
 
     let cities = search
+
+    let buttonItinerary
+    if (localStorage.getItem("loggedUser")){
+        buttonItinerary =  <LinkRouter className='card-button' to={`/new-itinerary?id=${cities?.response._id}`}>New Itinerary</LinkRouter>
+    }
 
     return (
         <>
@@ -27,6 +33,7 @@ export default function CityDetails({search}) {
                 <button className='card-button' onClick={back}>Back</button>
             </div>
         </div>
+            {buttonItinerary}
     </div> 
     </>
     )
