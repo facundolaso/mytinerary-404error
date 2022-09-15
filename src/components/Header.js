@@ -2,10 +2,14 @@ import { Link as LinkRouter } from 'react-router-dom'
 import '../styles/Header.css';
 import { useSignOutMutation } from '../features/usersSlice';
 import SignUp from './SignUp';
+import { useEffect } from 'react';
 
 const pages = [
   { name: 'Home', to: '/' },
-  { name: 'Cities', to: '/cities' },
+  { name: 'Cities', to: '/cities' }
+]
+
+const userPages = [
   { name: 'Mytinerary', to: '/mytinerary' }
 ]
 
@@ -25,6 +29,7 @@ export default function Header() {
   if (localStorage.getItem("loggedUser")) {
     loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     userPhoto = loggedUser.user.photo
+
   } else {
     userPhoto = '../../user.png'
   }
@@ -49,12 +54,14 @@ export default function Header() {
             {loggedUser.user.role == "admin" ? (
               <div className='Header-link-normal'>
                 {pages.map(link)}
+                {userPages.map(link)}
                 {adminPages.map(link)}
               </div>
 
             ) : (
               <div className='Header-link-normal'>
                 {pages.map(link)}
+                {userPages.map(link)}
               </div>
             )}
           </div>
