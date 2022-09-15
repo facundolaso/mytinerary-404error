@@ -11,9 +11,11 @@ const itinerarysSlice = createApi({
     endpoints: (builder) => ({
         addItinerary: builder.mutation({ query: itinerary => ({ url: "/itineraries", method: "POST", body: itinerary }) }),
 
+        deleteItinerary: builder.mutation({ query: itineraryid => ({ url: `/itineraries/${itineraryid}`, method: "DELETE", body: itineraryid }) }),
+
     })
 })
 
 export default itinerarysSlice
 
-export const {useAddItineraryMutation} = itinerarysSlice
+export const {useAddItineraryMutation, useDeleteItineraryMutation} = itinerarysSlice
