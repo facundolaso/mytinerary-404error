@@ -8,10 +8,14 @@
 }
 
 .cards-container-details{
+    display: flex;
+    flex-direction: column;
     width: 36rem;
-    height: 32rem;
+    height: 37rem;
     position: sticky;
     top: 1rem;
+    gap: 2rem;
+    
 }
 
 .card-details-details {
