@@ -1,12 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import api from '../api'
 
-const itinerariesSlice = createSlice({
-    name: 'itineraries',
-    initialState: [],
-    reducers: {
-    }
+const itinerarysSlice = createApi({
+    reducerPath: "itinerarySlice",
+
+    baseQuery: fetchBaseQuery({
+        baseUrl: api
+    }),
+
+    endpoints: (builder) => ({
+        addItinerary: builder.mutation({ query: itinerary => ({ url: "/itineraries", method: "POST", body: itinerary }) }),
+
+    })
 })
 
+export default itinerarysSlice
 
-export const { todoAdded } = itinerariesSlice.actions
-export default itinerariesSlice.reducer
+export const {useAddItineraryMutation} = itinerarysSlice
