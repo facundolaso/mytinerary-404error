@@ -10,11 +10,14 @@ export default function Itinerary({ search, refetchAction }) {
 
   let itineraries = search
 
+
   const [ deleteCity , result ] = useDeleteItineraryMutation()
   const handleAddTask = async (itineraryId) => {
       await deleteCity(itineraryId);
       refetchAction()
   }
+
+
   const itineraryView = (itinerary) => (
 
     <div className="itinerary-card" key={itinerary._id}>
@@ -36,18 +39,30 @@ export default function Itinerary({ search, refetchAction }) {
           <div className="itinerary-user-info">
             <img src={itinerary.user.photo} alt="user" />
             <div>
-            <h5>{itinerary.user.name}</h5>
-            <small>Likes: {itinerary.likes}</small>
+              <h5>{itinerary.user.name}</h5>
+              <small>Likes: {itinerary.likes}</small>
             </div>
           </div>
           {localStorage.getItem("loggedUser") ?
+            <>
+              {loggedUser.user.id == itinerary.user._id ? 
               <div>
                 <button className='itineraryUser-button' type="">Modificar</button>
-                <button className='itineraryUser-button' onClick={() => handleAddTask(itinerary._id)}>Eliminar</button>
-              </div>
-              :
-              ''
+
+                <button className='itineraryUser-button' onClick={handleAddTask}>Eliminar</button>
+              </div> 
+              : 
+              <>
+              {loggedUser.user.role == "admin" ?               <div>
+              <button className='itineraryUser-button' type="">Modificar</button>
+            </div> : ''}
+            </>
             }
+            </>
+
+            :
+            ''
+          }
         </div>
         <Activities itinerary={itinerary._id} />
         <Comments itinerary={itinerary._id} />
