@@ -4,6 +4,7 @@ import { useSignOutMutation } from '../features/usersSlice';
 import Alerts from './Alerts'
 import { useNavigate } from "react-router-dom"
 
+
 const pages = [
   { name: 'Home', to: '/' },
   { name: 'Cities', to: '/cities' },
