@@ -2,7 +2,8 @@ import React from 'react'
 import { useSignInMutation } from '../features/usersSlice'
 import '../styles/SignIn.css'
 import SignInGoogle from '../components/SignInGoogle'
-
+import Alerts from './Alerts'
+import { useNavigate } from "react-router-dom"
 
 
 const newUserForm = [
@@ -19,6 +20,7 @@ const inputForm = (inputData) => <div key={inputData.name} className="signIn-inp
 export default function SignIn() {
 
     let [signIn, result] = useSignInMutation()
+    const navigate = useNavigate()
 
     const handleSignIn = async (form) => {
         form.preventDefault()
@@ -33,8 +35,14 @@ export default function SignIn() {
     }
     if (result.isSuccess) {
         localStorage.setItem("loggedUser", JSON.stringify(result.data.response));
-    }
+        setTimeout(myFunction, 5000)
+        
 
+    }
+    function myFunction(){
+        navigate('/');
+        window.location.reload()
+    }
 
     return (
         <div className="signIn-container">
@@ -45,6 +53,7 @@ export default function SignIn() {
 
                 <input type="submit" className="signIn-submitBtn" value="Sign In" />
                 <SignInGoogle/>
+                <Alerts alert={result} />
             </form>
         </div>
     )

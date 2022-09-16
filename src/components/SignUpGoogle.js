@@ -3,9 +3,12 @@ import * as jose from 'jose'
 import { useEffect, useRef } from 'react'
 import '../styles/SignUp.css'
 import { useSignUpMutation } from '../features/usersSlice'
+import Alerts from './Alerts'
+import { useNavigate } from "react-router-dom"
 
 export default function SignUpGoogle() {
     const buttonDiv = useRef(null)
+    const navigate = useNavigate()
 
     let [addUser, result] = useSignUpMutation()
 
@@ -24,6 +27,15 @@ export default function SignUpGoogle() {
         }
         await addUser(googleData);
     }
+    if (result.isSuccess) {
+        setTimeout(myFunction, 5000)
+    }
+    function myFunction(){
+        navigate('/signin');
+        window.location.reload()
+        }
+
+
 
     useEffect(() => {
         /* global google */
@@ -41,7 +53,7 @@ export default function SignUpGoogle() {
     return (
         <div>
             <div className='google-btn' ref={buttonDiv}>
-
+            <Alerts alert={result} />
             </div>
         </div>
     )

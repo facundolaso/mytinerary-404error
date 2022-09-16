@@ -1,9 +1,9 @@
 import React from 'react'
 import '../styles/form/Input.css'
 import { useAddItineraryMutation } from '../features/itineraiesSlice'
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Alerts from './Alerts';
+import { useNavigate } from "react-router-dom"
 const form = [
     {
         name: "name",
@@ -25,34 +25,10 @@ const form = [
 
 const inputForm = (inputData) => <input className="input" name={inputData.name} placeholder={inputData.placeholder} type="text" key={inputData.name} required />
 export default function NewItinerary() {
-
-    const alertSucces = () => {
-        toast.success('Itinerary created, please reload the page!', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });    
-    }
-    const alertError = (message) => {
-            toast.error(message , {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                });
-    }
+    const navigate = useNavigate()
 
 
-        
-
-    let [addItinerary, result] = useAddItineraryMutation()
+    let [addItinerary, result, refetch] = useAddItineraryMutation()
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     let id
     let queryString = window.location.search
@@ -77,15 +53,15 @@ export default function NewItinerary() {
         
         
     }
-    
     if (result.isSuccess) {
-        alertSucces()
-    } else if (result.isError){
-        alertError(result.error.data.message)
-        result.isError = false
+        setTimeout(myFunction, 5000)
         
+    
     }
-
+    function myFunction(){
+        navigate('/mytinerary');
+        window.location.reload()
+    }
     return (
             <div className='new-city-container'>
                 <div className='form-decoration-container'>
@@ -101,7 +77,7 @@ export default function NewItinerary() {
                             {form.map(inputForm)}
                             <input type="submit" className='submit-btn' value='Send' ></input>
                         </form>
-                        <ToastContainer />
+                        <Alerts alert={result} /> 
                     </div>
                 </div>
                 <div className='form-decoration-plane-container'>
