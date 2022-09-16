@@ -3,9 +3,15 @@ import * as jose from 'jose'
 import { useEffect, useRef } from 'react'
 import '../styles/SignIn.css'
 import { useSignInMutation } from '../features/usersSlice'
+import Alerts from './Alerts'
+import { useNavigate } from "react-router-dom"
+
 
 export default function SignInGoogle() {
+    const navigate = useNavigate()
+
     const buttonDiv = useRef(null)
+
 
     let [signIn, result] = useSignInMutation()
 
@@ -19,11 +25,17 @@ export default function SignInGoogle() {
         }
 
         await signIn(googleData);
-        window.location.reload()
+
     }
     if (result.isSuccess) {
         localStorage.setItem("loggedUser", JSON.stringify(result.data.response));
+        setTimeout(myFunction, 5000)
     }
+
+    function myFunction(){
+        navigate('/');
+        window.location.reload()
+        }
 
     useEffect(() => {
         /* global google */
@@ -41,7 +53,7 @@ export default function SignInGoogle() {
     return (
         <div>
             <div className='google-btn' ref={buttonDiv}>
-
+            <Alerts alert={result} />
             </div>
         </div>
     )
