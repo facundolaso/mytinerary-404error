@@ -1,6 +1,8 @@
 import '../styles/SignUp.css'
 import { useSignUpMutation } from '../features/usersSlice'
 import SignUpGoogle from '../components/SignUpGoogle'
+import Alerts from './Alerts'
+import { useNavigate } from "react-router-dom"
 
 
 const newUserForm = [
@@ -30,6 +32,7 @@ const inputForm = (inputData) => <div className="signUp-inputContainer"><input t
 
 
 export default function SignUp({loggedUser}) {
+    const navigate = useNavigate()
 
     let [addUser, result] = useSignUpMutation()
     let role
@@ -55,6 +58,13 @@ export default function SignUp({loggedUser}) {
         await addUser(newUser);
         form.target.reset()
     }
+    if (result.isSuccess) {
+        setTimeout(myFunction, 5000)
+    }
+    function myFunction(){
+        navigate('/signin');
+        window.location.reload()
+        }
 
 
 
@@ -68,6 +78,7 @@ export default function SignUp({loggedUser}) {
 
       <input type="submit" className="signUp-submitBtn" value="Sign up"/>
       <SignUpGoogle/>
+      <Alerts alert={result} />
     </form>
   </div>
         </>
