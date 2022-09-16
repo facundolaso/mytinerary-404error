@@ -1,7 +1,8 @@
 import { Link as LinkRouter } from 'react-router-dom'
 import '../styles/Header.css';
 import { useSignOutMutation } from '../features/usersSlice';
-import SignUp from './SignUp';
+import Alerts from './Alerts'
+import { useNavigate } from "react-router-dom"
 
 const pages = [
   { name: 'Home', to: '/' },
@@ -20,6 +21,8 @@ export default function Header() {
   
   let [signOut, result] = useSignOutMutation()
 
+  const navigate = useNavigate()
+
   let userPhoto
   let loggedUser = {}
   if (localStorage.getItem("loggedUser")) {
@@ -32,13 +35,21 @@ export default function Header() {
   async function handleCredentialResponse() {
 
     let userData = {
-      mail: loggedUser.mail,
+      mail: loggedUser.user.mail,
     }
-
+    console.log(loggedUser.user.mail)
     await signOut(userData);
     localStorage.removeItem("loggedUser");
-    window.location.reload()
   }
+  if (result.isSuccess) {
+    setTimeout(myFunction, 5000)
+    
+
+}
+function myFunction(){
+    navigate('/');
+    window.location.reload()
+}
 
   return (
     <div className="Header-container">
@@ -112,6 +123,7 @@ export default function Header() {
             <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
         )}
       </div>
+      <Alerts alert={result} />
     </div>
   )
 }

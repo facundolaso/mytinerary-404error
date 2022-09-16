@@ -3,21 +3,18 @@ import '../styles/ItineraryCard.css'
 import Activities from "./Activities";
 import Comments from "./Comments";
 import { useDeleteItineraryMutation } from "../features/itineraiesSlice";
+import Alerts from "./Alerts";
 
 
-export default function Itinerary({ search }) {
+export default function Itinerary({ search, refetchAction }) {
 
   let itineraries = search
 
   const [ deleteCity , result ] = useDeleteItineraryMutation()
-
-  const handleAddTask = async () => {
-    let itineraryId = itineraries?.response[0]._id
+  const handleAddTask = async (itineraryId) => {
       await deleteCity(itineraryId);
-      console.log(itineraryId)
-      window.location.reload()
+      refetchAction()
   }
-
   const itineraryView = (itinerary) => (
 
     <div className="itinerary-card" key={itinerary._id}>
@@ -30,7 +27,7 @@ export default function Itinerary({ search }) {
           Duration: {itinerary.duration}
         </p>
         <p>
-          Price: {itinerary.price}
+          $ {itinerary.price}
         </p>
         <p>
           Tags: {itinerary.tags}
@@ -46,7 +43,7 @@ export default function Itinerary({ search }) {
           {localStorage.getItem("loggedUser") ?
               <div>
                 <button className='itineraryUser-button' type="">Modificar</button>
-                <button className='itineraryUser-button' onClick={handleAddTask}>Eliminar</button>
+                <button className='itineraryUser-button' onClick={() => handleAddTask(itinerary._id)}>Eliminar</button>
               </div>
               :
               ''
@@ -61,6 +58,7 @@ export default function Itinerary({ search }) {
   return (
     <div className="itinerary-container">
       {itineraries?.response.map(itineraryView)}
+      <Alerts alert={result} />
     </div>
   )
 }
