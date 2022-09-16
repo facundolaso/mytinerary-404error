@@ -3,9 +3,9 @@ import Itinerary from '../components/ItineraryCard'
 import { useGetItineraryUserQuery } from '../features/dataAPI'
 import '../styles/ItineraryCard.css'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
 
 export default function MytineraryPage() {
+
     let loggedUser = {}
     if (localStorage.getItem("loggedUser")) {
         loggedUser = JSON.parse(localStorage.getItem("loggedUser")).user
@@ -17,15 +17,14 @@ export default function MytineraryPage() {
         navigate(-1)
     }
 
-    let { data: itineraries } = useGetItineraryUserQuery(loggedUser.id)
+    let { data: itineraries, refetch } = useGetItineraryUserQuery(loggedUser.id)
 
     return (
         <div className='container-mytinerary'>
             <button className='card-button' onClick={back}>Back</button>
             <div>
-                <Itinerary search={itineraries} />
+                <Itinerary search={itineraries}  refetchAction={refetch} />
             </div>
         </div>
-
     )
 }
