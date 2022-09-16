@@ -1,6 +1,8 @@
 import React from 'react'
 import '../../styles/form/Input.css'
 import { useAddCityMutation } from '../../features/dataAPI'
+import Alerts from '../Alerts'
+import { useNavigate } from "react-router-dom"
 
 const form = [
     {
@@ -31,6 +33,8 @@ export default function Input() {
 
     let [addTask, result] = useAddCityMutation()
 
+    const navigate = useNavigate()
+
     const handleAddTask = async (form) => {
         form.preventDefault()
         const newcity = {
@@ -45,9 +49,13 @@ export default function Input() {
     }
 
     if (result.isSuccess) {
-        alert('City created successfully!!')
-    } else if (result.isError){
-        alert('City not created')
+        setTimeout(myFunction, 5000)
+        
+
+    }
+    function myFunction(){
+        navigate('/');
+        window.location.reload()
     }
 
     return (
@@ -70,6 +78,7 @@ export default function Input() {
                 <div className='form-decoration-plane-container'>
                     <img src="../../../form_decoration_plane.svg" alt="" />
                 </div>
+                <Alerts alert={result} />
             </div>
     )
 }
