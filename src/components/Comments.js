@@ -17,7 +17,6 @@ export default function Comments({ itinerary }) {
     let loggedUser
     if (localStorage.getItem("loggedUser")) {
         loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-
     }
 
     const commentView = (comment) => (
