@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-.container-mytinerary{
+.container-mytinerary {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.container-mytinerary button{
-    margin: 1rem;
 
+.container-mytinerary button {
+    margin: 1rem;
 }
+
 .itinerary-container {
     display: flex;
     justify-content: center;
@@ -32,7 +33,7 @@
 .itinerary-card-body {
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     align-items: flex-start;
     padding: 20px;
     gap: 5px;
@@ -57,15 +58,16 @@
 
 .itinerary-card-body p {
     font-size: 15px;
-    margin: 5px!important;
+    margin: 5px !important;
 }
 
 .itinerary-user {
     display: flex;
     margin-top: auto;
-    border-bottom: 1px solid #666dce ;
+    border-bottom: 1px solid #666dce;
     width: 100%;
     padding: 10px;
+    justify-content: space-between;
 }
 
 .itinerary-user img {
@@ -76,20 +78,78 @@
     margin-right: 10px;
 }
 
+.itinerary-user-info {
+    display: flex;
+    align-items: center;
+}
+
 .itinerary-user-info h5 {
     margin: 0;
 }
 
+.itineraryUser-button {
+    padding: .5rem;
+    border: none;
+    border-radius: 4px;
+    background: #495C83;
+    color: white;
+    font-weight: bold;
+    transition: 0.4s ease;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    align-self: center;
+}
+
+.itineraryUser-button:hover {
+    background: #C8B6E2;
+    color: black;
+}
+
 @media (max-width: 768px) {
     .itinerary-card-body {
-        width: 22rem;
-    
+        width: 100%;
+
+    }
+
+    .itinerary-card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .itinerary-card-body {
+        width: 100%;
+
+    }
+
+    .itinerary-card {
+        width: 80%;
     }
 }
 
 @media (max-width: 425px) {
-    .itinerary-card-body {
-        width: 15rem;
-    
+    .itinerary-card {
+        width: 90%;
     }
+
+    .itinerary-user {
+        display: flex;
+        margin-top: auto;
+        border-bottom: 1px solid #666dce;
+        width: 100%;
+        padding: 10px;
+        justify-content: space-between;
     }
+
+    .itineraryUser-button {
+        padding: .3rem;
+        margin: 2px !important;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .itineraryUser-button {
+        margin: 2px 0 0 2rem !important;
+    }
+
+}

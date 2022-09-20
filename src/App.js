@@ -9,7 +9,14 @@ import UnderConstruction from './pages/UnderConstruction.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop';
 import MytineraryPage from './pages/MytineraryPage';
+import SignUpPage from './pages/SignUpPage'
+import SignInPage from './pages/SignInPage';
+import NewItinerary from './components/NewItinerary';
 
+let loggedUser = {}
+if (localStorage.getItem("loggedUser")) {
+  loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+}
 
 function App() {
   return (
@@ -19,12 +26,14 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/cities' element={<CitiesPage />} />
-          <Route path='/new-city' element={<NewCityPage />} />
+          {loggedUser.user ? ( <> {loggedUser.user.role == "admin" ?  <Route path='/new-city' element={<NewCityPage />} />  :  '*' } </> ) :  '*' }
           <Route path='/details' element={<DetailsPage/>} />
-          <Route path='/edit-city' element={<EditCityPage/>} />
+          {loggedUser.user ? ( <> {loggedUser.user.role == "admin" ?  <Route path='/edit-city' element={<EditCityPage/>} />  :  '*' } </> ) :  '*' }
+          {loggedUser.user ? <Route path='/mytinerary' element={<MytineraryPage/>} /> : '' }
+          {loggedUser.user ? ( <> {loggedUser.user.role == "admin" ?  <Route path='/signup' element={<SignUpPage/>} />  :  '*' } </> ) :  <Route path='/signup' element={<SignUpPage/>} /> }
+          {loggedUser.user ? '*' :  <Route path='/signin' element={<SignInPage/>} /> }
           <Route path='*' element={<UnderConstruction />} />
-          <Route path='/' element={<HomePage />} />
-          <Route path='/mytinerary' element={<MytineraryPage/>} />         
+          {loggedUser.user ? <Route path='/new-itinerary' element={<NewItinerary />} /> : '*'}
         </Routes>
       </PageLayout>
     </BrowserRouter>
