@@ -43,9 +43,9 @@ export default function Header() {
     let userData = {
       mail: loggedUser.user.mail,
     }
-    console.log(loggedUser.user.mail)
     await signOut(userData);
     localStorage.removeItem("loggedUser");
+    localStorage.removeItem("token");
   }
   if (result.isSuccess) {
     setTimeout(myFunction, 5000)
