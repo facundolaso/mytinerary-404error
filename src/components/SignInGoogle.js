@@ -29,6 +29,7 @@ export default function SignInGoogle() {
     }
     if (result.isSuccess) {
         localStorage.setItem("loggedUser", JSON.stringify(result.data.response));
+        localStorage.setItem("token", JSON.stringify(result.data.token));
         setTimeout(myFunction, 5000)
     }
 
