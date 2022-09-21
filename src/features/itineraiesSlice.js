@@ -13,9 +13,11 @@ const itinerarysSlice = createApi({
 
         deleteItinerary: builder.mutation({ query: itineraryid => ({ url: `/itineraries/${itineraryid}`, method: "DELETE", body: itineraryid }) }),
 
+        like: builder.mutation({ query: (id) => ({ url: `/itineraries/likes/${id}`, method: 'PATCH', headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`} })})
+
     })
 })
 
 export default itinerarysSlice
 
-export const {useAddItineraryMutation, useDeleteItineraryMutation} = itinerarysSlice
+export const { useAddItineraryMutation, useDeleteItineraryMutation, useLikeMutation } = itinerarysSlice

@@ -9,13 +9,14 @@ export default function DetailsPage() {
     let queryString = window.location.search
     let params = new URLSearchParams(queryString)
     id = params.get("id")
+
     let { data: itineraries } = useGetDetailCityQuery(id)
-    let { data: itinerariesCity } = useGetItineraryCityQuery(id)
+    let { data: itinerariesCity, refetch } = useGetItineraryCityQuery(id)
 
   return (
     <div className='All-Container'>   
       <CityDetails search={itineraries}/>
-      <Itinerary search={itinerariesCity}/>
+      <Itinerary search={itinerariesCity} refetchAction={refetch}/>
     </div>
 
   )
