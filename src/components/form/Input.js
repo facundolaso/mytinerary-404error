@@ -24,6 +24,14 @@ const form = [
     {
         name: "fundation",
         placeholder: "Type here age of fundation",
+    },
+    {
+        name: "latitude",
+        placeholder: "Type here the Latitude",
+    },
+    {
+        name: "longitude",
+        placeholder: "Type here the Longitude",
     }
 ]
 
@@ -42,20 +50,12 @@ export default function Input() {
             country: form.target.country.value,
             photo: form.target.photo.value,
             population: form.target.population.value,
-            fundation: form.target.fundation.value
+            fundation: form.target.fundation.value,
+            latitude: form.target.latitude.value,
+            longitude: form.target.longitude.value
         };
         await addTask(newcity);
         form.target.reset()
-    }
-
-    if (result.isSuccess) {
-        setTimeout(myFunction, 5000)
-        
-
-    }
-    function myFunction(){
-        navigate('/');
-        window.location.reload()
     }
 
     return (
