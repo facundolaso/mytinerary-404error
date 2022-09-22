@@ -1,0 +1,44 @@
+.leaflet-container {
+    width: 70vw;
+    height: 60vh;
+    display: flex;
+    border-radius: 1rem;
+    border: 2px solid rgb(171, 141, 228);
+}
+
+#map {
+    display: flex;
+    justify-content: center;
+    background-color: #A8A4CE;
+    padding: 1rem;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.popup img {
+    width: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .leaflet-container {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .leaflet-container {
+        height: 40vh;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .leaflet-container {
+        height: 30vh;
+    }
+}
