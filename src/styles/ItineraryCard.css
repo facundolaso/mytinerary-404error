@@ -41,6 +41,7 @@
 
 }
 
+
 .itinerary-tag {
     background: #cccccc;
     border-radius: 50px;
@@ -82,6 +83,11 @@
     display: flex;
     align-items: center;
 }
+.itinerary-user-info small {
+    display:inline-block;
+   transform: translateY(-4px);
+   padding: 7px;
+}
 
 .itinerary-user-info h5 {
     margin: 0;
@@ -90,6 +96,7 @@
 .itineraryUser-button {
     padding: .5rem;
     border: none;
+    margin: 3px;
     border-radius: 4px;
     background: #495C83;
     color: white;
@@ -133,6 +140,10 @@
 
     .itinerary-card {
         width: 80%;
+    }
+    .itineraryUser-button {
+        padding: .2rem;
+      
     }
 }
 

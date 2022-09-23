@@ -6,6 +6,17 @@
     padding: 1rem 0;
 }
 
+select{
+    background-color: #ad61f5;
+    padding: 4px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    box-shadow: 0 0.3rem #dfd9d9;
+    cursor: pointer;
+}
+
+
 .form-decoration-container{
     align-self: flex-end;
     transform: translateY(1.5rem);
@@ -78,7 +89,6 @@
     font-size: 1rem;
     width: 15em;
     border-radius: 1rem;
-    color: lightcoral;
     box-shadow: 0 0.4rem #dfd9d9;
     cursor: pointer;
 }

@@ -90,7 +90,7 @@ export default function Itinerary({ search, refetchAction }) {
           {itinerary.name} Itinerary
         </h4>
         <p>
-          Duration: {itinerary.duration}
+          Duration (min): {itinerary.duration}
         </p>
         <p>
           $ {itinerary.price}
@@ -104,7 +104,7 @@ export default function Itinerary({ search, refetchAction }) {
             <div>
               <h5>{itinerary.user.name}</h5>
               <Like handleLike={handleLike} itinerary={itinerary}></Like>
-              <small>Likes: {itinerary.likes.length}</small>
+              <small>{itinerary.likes.length}</small>
             </div>
           </div>
           {localStorage.getItem("loggedUser") ?

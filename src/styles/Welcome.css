@@ -30,7 +30,7 @@
     font-size: 5.5vw;
     color: #495C83;
     font-family: 'Sniglet', cursive;
-    -webkit-text-stroke: .1px rgba(0, 0, 0, 0.918);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.918);
 }
 
 .Welcome-slogan {

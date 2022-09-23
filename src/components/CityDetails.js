@@ -26,9 +26,9 @@ export default function CityDetails({search}) {
                 <h1 className='title-details'>{cities?.response.city}</h1>
                 <hr className='separator'/>
                 <h2>{cities?.response.country}</h2>
-                <p>Amount of population:</p>
+                <p className='subtitle-details'>Amount of population</p>
                 <p>{cities?.response.population}</p>
-                <p>Founded in:</p>
+                <p className='subtitle-details'>Founded in</p>
                 <p>{(new Date(cities?.response.fundation)).getFullYear().toLocaleString()}</p>
                 <button className='card-button' onClick={back}>Back</button>
             </div>

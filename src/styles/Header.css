@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400");
 
+
 .Header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    justify-content:space-between;
+    padding: 4rem;
     background: linear-gradient(190deg, #6676b6, #C8B6E2);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-family: 'Open Sans', sans-serif;
@@ -18,15 +19,17 @@
 .Header-logo {
     display: flex;
     text-align: center;
-    transform: translateX(-9rem);
+
 }
 
 .Header-link-logo {
+    position:absolute;
     text-decoration: none;
     font-size: 1.4rem;
     color: white;
     -webkit-text-stroke: .1px rgba(0, 0, 0, 0.918);
     font-family: 'Sniglet', cursive;
+    transform: translate(-19rem,-4rem);
 }
 
 
@@ -35,8 +38,10 @@
 }
 
 .Header-user {
-    height: 3rem;
-    border-radius: 5rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .Header-link {
@@ -110,11 +115,11 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
     .Header-logo {
         text-align: center;
-        transform: translateX(3rem);
+        transform: translate(15.5rem);
     }
 
     .Header-link-normal {
@@ -209,15 +214,20 @@
     .menu__item:hover {
         background-color: #CFD8DC;
     }
+    
 }
 
 .dropbtn {
     background: none;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
     color: white;
-    padding: 16px;
     font-size: 16px;
-    border: none;
     cursor: pointer;
+    transition: 0.4s ease;
+    border: none;
+
 }
 
 .dropdown {
@@ -233,6 +243,7 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     right: 0;
+    border-radius: 10px;
 }
 
 .dropdown-content a {
@@ -255,7 +266,23 @@
     border-radius: 10rem;
 }
 
+@media (max-width: 425px) {
+    .Header-logo {
+        transform: translate(0rem);
+    }
+    .Header-container{
+        padding: 2rem;
+    }
+    .Header-link-logo {
+        position:relative;
+        transform: translate(2rem,0rem);
+    }
+    .dropbtn {
+        transform: translateX(1rem);
+        padding: 4px;
+    }
 
+}
 @media (max-width: 320px) {
     .dropbtn {
         transform: translateX(1rem);

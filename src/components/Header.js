@@ -134,8 +134,8 @@ function myFunction(){
           <div className="dropdown-content"><LinkRouter to="/signin" ><span>Sign In</span></LinkRouter>
             <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
         )}
+        { <Alerts alert={result} /> }
       </div>
-      <Alerts alert={result} />
     </div>
   )
 }
