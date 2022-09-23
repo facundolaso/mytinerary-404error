@@ -95,10 +95,14 @@ function myFunction(){
                 {loggedUser.user.role == "admin" ? (
                   <li>
                     {pages.map(link)}
+                    {userPages.map(link)}
                     {adminPages.map(link)}
                   </li>
                 ) : (
-                  <li>{pages.map(link)}</li>
+                  <li>
+                    {pages.map(link)}
+                    {userPages.map(link)}
+                  </li>
                 )}
               </>
             ) : (
