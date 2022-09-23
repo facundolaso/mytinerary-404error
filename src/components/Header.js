@@ -50,12 +50,12 @@ export default function Header() {
   if (result.isSuccess) {
     setTimeout(myFunction, 5000)
     
-
-}
-function myFunction(){
+    
+  }
+  function myFunction(){
     navigate('/');
     window.location.reload()
-}
+  }
 
   return (
     <div className="Header-container">
@@ -121,7 +121,7 @@ function myFunction(){
         {loggedUser.user ? (
           <>
             {loggedUser.user.role == "admin" ? (
-              <div className="dropdown-content">
+              <div className="dropdown-content">  
                 <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/signup" >Sign up</LinkRouter><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter>
               </div>
             ) : (
