@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom"
 const newUserForm = [
     {
         name: "mail",
+        type: "text"
     },
     {
         name: "password",
+        type: "password"
     },
 ]
 
@@ -37,12 +39,9 @@ export default function SignIn() {
         localStorage.setItem("loggedUser", JSON.stringify(result.data.response));
         localStorage.setItem("token", JSON.stringify(result.data.token));
         setTimeout(myFunction, 5000)
-        
-
     }
     function myFunction(){
         navigate('/');
-        window.location.reload()
     }
 
     return (

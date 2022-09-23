@@ -3,24 +3,29 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import '../../styles/maps/Maps.css'
 import { useGetAllCitiesQuery } from '../../features/dataAPI'
 import { Link as LinkRouter } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import ResetViewControl from '@20tab/react-leaflet-resetview';
 
 export default function Maps() {
-    let { data: cities } = useGetAllCitiesQuery()
+    let { data: cities, refetch } = useGetAllCitiesQuery()
 
     const mapView = city => (
         <Marker alt={city.city} position={[city.latitude, city.longitude]}>
             <Popup keepInView={true} closeButton={false}>
                 <div className='popup'>
-                {city.city}
-                
-                <img className='' src={city.photo} alt=""/>
-                <LinkRouter to={`/details?id=${city._id}`}>Go to city detail</LinkRouter>
+                    {city.city}
+
+                    <img className='' src={city.photo} alt="" />
+                    <LinkRouter to={`/details?id=${city._id}`}>Go to city detail</LinkRouter>
                 </div>
             </Popup>
         </Marker>
     )
+
+
+    useEffect(() => {
+        refetch()
+    }, [])
 
     return (
         <div id="map">
