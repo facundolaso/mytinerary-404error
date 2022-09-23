@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     padding: 1rem;
     justify-content: center;
+    align-content: center;
     min-height: 66.8vh;
     gap: 2rem;
 }
@@ -15,6 +16,7 @@
     position: sticky;
     top: 1rem;
     gap: 2rem;
+
 
 }
 
@@ -80,6 +82,11 @@
     justify-self: flex-start;
 }
 
+.subtitle-details{
+    text-decoration:underline;
+    
+}
+
 @media (max-width: 1024px) {
     .cards-container-details {
         width: 20rem;
@@ -101,9 +108,9 @@
 }
 
 @media (max-width: 425px) {
-
     .cards-container-details {
         position: relative;
+        transform: translate(1.5rem);
 
     }
 }
