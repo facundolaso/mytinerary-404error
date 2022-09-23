@@ -44,7 +44,7 @@ export default function NewItinerary() {
             user: loggedUser.user.id,
             city: id,
             price: form.target.price.value,
-            likes: [0],
+            likes: [],
             tags: tag,
             duration: form.target.duration.value,
         };
