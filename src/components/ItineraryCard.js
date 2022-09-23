@@ -1,28 +1,85 @@
-import React from "react";
+import React, { useState } from "react";
 import '../styles/ItineraryCard.css'
 import Activities from "./Activities";
 import Comments from "./Comments";
-import { useDeleteItineraryMutation } from "../features/itineraiesSlice";
+import { useEditItineraryMutation, useDeleteItineraryMutation, useLikeMutation } from "../features/itineraiesSlice";
 import Alerts from "./Alerts";
-
+import Like from "./Like";
 
 export default function Itinerary({ search, refetchAction }) {
 
+  const formEditItinerary = [
+    {
+      name: "name",
+      placeholder: "Type here itinerary name",
+    },
+    {
+      name: "price",
+      placeholder: "Type here the price of the itinerary",
+    },
+    {
+      name: "tags",
+      placeholder: "Type here your tags",
+    },
+    {
+      name: "duration",
+      placeholder: "Type here the duration in minutes",
+    },
+  ]
+
+  const inputForm = (inputData) => <input className="input" name={inputData.name} placeholder={inputData.placeholder} type="text" key={inputData.name} required />
+
+
   let itineraries = search
 
+  const [editItinearyOpen, setEditItinerary] = useState(false)
+  function toggleEditItinerary() {
+    setEditItinerary(wasOpened => !wasOpened)
+  }
 
-  const [ deleteCity , result ] = useDeleteItineraryMutation()
-  const handleAddTask = async (itineraryId) => {
-      await deleteCity(itineraryId);
-      refetchAction()
+  let [editItinerary] = useEditItineraryMutation()
+  const handleEditItinerary = async (form) => {
+    form.preventDefault()
+    let id = form.target.id
+    const newEditItinerary =
+    {
+      name: form.target.name.value,
+      price: form.target.price.value,
+      tags: form.target.tags.value,
+      duration: form.target.duration.value,
+      id
+    };
+    await editItinerary(newEditItinerary);
+    form.target.reset()
+    setEditItinerary(false)
+    refetchAction()
+  }
+
+  const [deleteCity, result] = useDeleteItineraryMutation()
+  const handleDeleteItinerary = async (itineraryId) => {
+    await deleteCity(itineraryId.target.id);
+    refetchAction()
   }
 
   let loggedUser
   if (localStorage.getItem("loggedUser")) {
     loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+  }
 
-}
+  const [like] = useLikeMutation()
+  async function handleLike(itinerary) {
+    if (localStorage.getItem('token')) {
+      try {
+        const it = await like(itinerary.target.id);
+        if (it.data?.success) {
+          refetchAction()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
+  }
 
   const itineraryView = (itinerary) => (
 
@@ -33,7 +90,7 @@ export default function Itinerary({ search, refetchAction }) {
           {itinerary.name} Itinerary
         </h4>
         <p>
-          Duration: {itinerary.duration}
+          Duration (min): {itinerary.duration}
         </p>
         <p>
           $ {itinerary.price}
@@ -46,26 +103,40 @@ export default function Itinerary({ search, refetchAction }) {
             <img src={itinerary.user.photo} alt="user" />
             <div>
               <h5>{itinerary.user.name}</h5>
-              <small>Likes: {itinerary.likes}</small>
+              <Like handleLike={handleLike} itinerary={itinerary}></Like>
+              <small>{itinerary.likes.length}</small>
             </div>
           </div>
           {localStorage.getItem("loggedUser") ?
             <>
-              {loggedUser.user.id == itinerary.user._id ? 
-              <div>
-                <button className='itineraryUser-button' type="">Modificar</button>
+              {loggedUser.user.id == itinerary.user._id ?
+                <div>
+                  <button className='itineraryUser-button' onClick={toggleEditItinerary}>Modificar</button>
+                  <>{editItinearyOpen && (
+                    <form id={itinerary._id} className='comment-form' onSubmit={handleEditItinerary}>
+                      {formEditItinerary.map(inputForm)}
+                      <input className='itineraryUser-button' type="submit" name="" value="Submit" />
+                    </form>
+                  )}
+                  </>
 
-                <button className='itineraryUser-button' onClick={handleAddTask}>Eliminar</button>
-              </div> 
-              : 
-              <>
-              {loggedUser.user.role == "admin" ?               <div>
-              <button className='itineraryUser-button' type="">Modificar</button>
-            </div> : ''}
+                  <button id={itinerary._id} className='itineraryUser-button' onClick={handleDeleteItinerary}>Eliminar</button>
+                </div>
+                :
+                <>
+                  {loggedUser.user.role == "admin" ? <div>
+                    <button className='itineraryUser-button' onClick={toggleEditItinerary}>Modificar</button>
+                    <>{editItinearyOpen && (
+                      <form id={itinerary._id} className='comment-form' onSubmit={handleEditItinerary}>
+                        {formEditItinerary.map(inputForm)}
+                        <input className='itineraryUser-button' type="submit" name="" value="Submit" />
+                      </form>
+                    )}
+                    </>
+                  </div> : ''}
+                </>
+              }
             </>
-            }
-            </>
-
             :
             ''
           }
@@ -74,8 +145,8 @@ export default function Itinerary({ search, refetchAction }) {
         <Comments itinerary={itinerary._id} />
       </div>
     </div>
-
   )
+
   return (
     <div className="itinerary-container">
       {itineraries?.response.map(itineraryView)}

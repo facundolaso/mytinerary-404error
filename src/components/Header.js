@@ -43,19 +43,19 @@ export default function Header() {
     let userData = {
       mail: loggedUser.user.mail,
     }
-    console.log(loggedUser.user.mail)
     await signOut(userData);
     localStorage.removeItem("loggedUser");
+    localStorage.removeItem("token");
   }
   if (result.isSuccess) {
     setTimeout(myFunction, 5000)
     
-
-}
-function myFunction(){
+    
+  }
+  function myFunction(){
     navigate('/');
     window.location.reload()
-}
+  }
 
   return (
     <div className="Header-container">
@@ -95,10 +95,14 @@ function myFunction(){
                 {loggedUser.user.role == "admin" ? (
                   <li>
                     {pages.map(link)}
+                    {userPages.map(link)}
                     {adminPages.map(link)}
                   </li>
                 ) : (
-                  <li>{pages.map(link)}</li>
+                  <li>
+                    {pages.map(link)}
+                    {userPages.map(link)}
+                  </li>
                 )}
               </>
             ) : (
@@ -117,7 +121,7 @@ function myFunction(){
         {loggedUser.user ? (
           <>
             {loggedUser.user.role == "admin" ? (
-              <div className="dropdown-content">
+              <div className="dropdown-content">  
                 <h4 className='user-name'>{loggedUser.user.name} </h4><LinkRouter to="/signup" >Sign up</LinkRouter><LinkRouter to="/" onClick={handleCredentialResponse}>Sign out</LinkRouter>
               </div>
             ) : (
@@ -130,8 +134,8 @@ function myFunction(){
           <div className="dropdown-content"><LinkRouter to="/signin" ><span>Sign In</span></LinkRouter>
             <LinkRouter to="/signup" ><span>Sign Up</span></LinkRouter> </div>
         )}
+        { <Alerts alert={result} /> }
       </div>
-      <Alerts alert={result} />
     </div>
   )
 }

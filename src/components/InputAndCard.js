@@ -3,13 +3,13 @@ import InputSearch from './InputSearch'
 import CityCard from './CityCard'
 import '../styles/CardsContainer.css'
 import { useGetAllCitiesQuery, useGetCityNameQuery } from '../features/dataAPI'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function InputAndCard() {
 
     const [find, setFind] = useState("")
     
-    let { data : cities  } = useGetAllCitiesQuery()
+    let { data : cities, refetch  } = useGetAllCitiesQuery()
     const { data : citiesFilter } = useGetCityNameQuery(find)
 
     function search(name) {
@@ -22,6 +22,11 @@ export default function InputAndCard() {
     } else {
       citiesData = citiesFilter
     }
+
+    useEffect(() => {
+      refetch()
+    }, [])
+    
 
   return (
     <div className='container'>
